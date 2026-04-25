@@ -197,50 +197,66 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
 
           {/* Correct at level 3 — mastered, next arrow */}
           {phase === "correct" && (
-            <div className="text-center mt-4">
-              <p className="text-2xl mb-3">⭐</p>
-              <button
-                onClick={advanceToNext}
-                className="bg-green-600 text-white w-14 h-14 rounded-full text-2xl flex items-center justify-center mx-auto hover:bg-green-700 transition-colors active:scale-95"
-              >
-                →
-              </button>
+            <div className="mt-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+              <div className="bg-green-50 border border-green-200 rounded-2xl p-6 text-center shadow-sm">
+                <div className="mx-auto flex items-center justify-center w-14 h-14 rounded-full bg-white mb-4 shadow-sm border border-green-100">
+                  <span className="text-2xl mt-1">⭐</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Mastered!</h3>
+                <p className="text-gray-600 mb-6 text-sm">You&apos;ve reached the maximum level for this question.</p>
+                <button
+                  onClick={advanceToNext}
+                  className="bg-gray-900 text-white font-semibold w-full sm:w-auto px-8 py-3.5 rounded-xl flex items-center justify-center mx-auto hover:bg-gray-800 shadow-md active:scale-[0.98] transition-all"
+                >
+                  Continue <span className="ml-2 font-bold">→</span>
+                </button>
+              </div>
             </div>
           )}
 
           {/* Wrong answer — show feedback and next button */}
           {phase === "wrong" && (
-            <div className="text-center mt-4">
-              <p className="text-red-600 font-medium mb-3">Wrong answer!</p>
-              <button
-                onClick={advanceToNext}
-                className="bg-blue-600 text-white w-14 h-14 rounded-full text-2xl flex items-center justify-center mx-auto hover:bg-blue-700 transition-colors active:scale-95"
-              >
-                →
-              </button>
+            <div className="mt-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+              <div className="bg-red-50 border border-red-200 rounded-2xl p-6 text-center shadow-sm">
+                <div className="mx-auto flex items-center justify-center w-14 h-14 rounded-full bg-white mb-4 shadow-sm border border-red-100 text-red-500">
+                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-6">Not quite</h3>
+                <button
+                  onClick={advanceToNext}
+                  className="bg-gray-900 text-white font-semibold w-full sm:w-auto px-8 py-3.5 rounded-xl flex items-center justify-center mx-auto hover:bg-gray-800 shadow-md active:scale-[0.98] transition-all"
+                >
+                  Try next <span className="ml-2 font-bold">→</span>
+                </button>
+              </div>
             </div>
           )}
 
           {/* Confidence overlay modal */}
           {phase === "confidence" && (
-            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[100]">
-              <div className="bg-white rounded-2xl p-10 text-center max-w-sm w-[85%] shadow-2xl">
-                <p className="text-5xl mb-3">✅</p>
-                <p className="text-gray-500 mb-6">How&apos;d you feel about this?</p>
-                <div className="flex justify-center gap-12">
+            <div className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm flex items-center justify-center z-[100] p-4 transition-all hover:cursor-pointer" onClick={(e) => { if (e.target === e.currentTarget) handleConfidence(true); }}>
+              <div className="bg-white rounded-[2rem] p-8 text-center max-w-md w-full shadow-2xl animate-in zoom-in-95 duration-300">
+                <div className="mx-auto flex items-center justify-center w-16 h-16 rounded-full bg-green-50 mb-4 border border-green-100 shadow-sm">
+                  <svg className="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 tracking-tight">Correct!</h3>
+                <p className="text-gray-500 mb-8 text-base">How confident were you with your answer?</p>
+                <div className="flex flex-col sm:flex-row justify-center gap-3">
                   <button
                     onClick={() => handleConfidence(false)}
-                    className="text-6xl hover:scale-125 transition-transform active:scale-95"
-                    style={{ background: "none", border: "none", cursor: "pointer" }}
+                    className="flex-1 py-3.5 px-4 rounded-2xl border-2 border-gray-100 text-gray-700 font-semibold hover:border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition-all active:scale-[0.98]"
                   >
-                    😟
+                    I guessed
                   </button>
                   <button
                     onClick={() => handleConfidence(true)}
-                    className="text-6xl hover:scale-125 transition-transform active:scale-95"
-                    style={{ background: "none", border: "none", cursor: "pointer" }}
+                    className="flex-1 py-3.5 px-4 rounded-2xl bg-gray-900 text-white font-semibold hover:bg-gray-800 shadow-md active:scale-[0.98] transition-all"
                   >
-                    😊
+                    I knew it
                   </button>
                 </div>
               </div>
