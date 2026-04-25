@@ -2,14 +2,11 @@ import {
   BedrockAgentRuntimeClient,
   RetrieveCommand,
 } from "@aws-sdk/client-bedrock-agent-runtime";
-import {
-  BedrockRuntimeClient,
-  InvokeModelCommand,
-} from "@aws-sdk/client-bedrock-runtime";
 
 const KB_ID = "FCF1GEJPXT";
 const REGION = process.env.AWS_DEFAULT_REGION || process.env.AWS_REGION || "us-west-2";
-const MODEL_ID = "us.anthropic.claude-haiku-4-5-20251001-v1:0";
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "anthropic/claude-3-haiku";
 
 const SYSTEM_PROMPT =
   "You are a STRICT AND RIGOROUS evaluator and tutor for security guard exam preparation. " +
@@ -35,22 +32,11 @@ const SYSTEM_PROMPT =
   "no markdown fences:\n" +
   '{"english":{"score":N,"feedback":"..."},"concepts":{"score":N,"feedback":"..."},"teaching":"..."}';
 
-if (!process.env.AWS_ACCESS_KEY_ID) {
-  console.warn("⚠️ AWS credentials not found in env variables! TTS and Evaluate will fail unless you exported them or set them in .env.local");
+if (!OPENROUTER_API_KEY) {
+  console.warn("⚠️ OPENROUTER_API_KEY not found in env variables! Evaluate will fail unless you set it in .env.local");
 }
 
-const credentialsConfig = process.env.AWS_ACCESS_KEY_ID
-  ? {
-      credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-        ...(process.env.AWS_SESSION_TOKEN ? { sessionToken: process.env.AWS_SESSION_TOKEN } : {}),
-      },
-    }
-  : {};
-
-const agentClient = new BedrockAgentRuntimeClient({ region: REGION, ...credentialsConfig });
-const runtimeClient = new BedrockRuntimeClient({ region: REGION, ...credentialsConfig });
+const agentClient = new BedrockAgentRuntimeClient({ region: REGION });
 
 async function retrieveContext(query: string): Promise<string> {
   try {
@@ -90,28 +76,37 @@ async function evaluate(
     `## Correct Answer\n${correctAnswer}\n\n` +
     `## Candidate's Explanation\n${explanation}`;
 
-  const requestBody = JSON.stringify({
-    anthropic_version: "bedrock-2023-05-31",
-    max_tokens: 1024,
-    system: SYSTEM_PROMPT,
-    messages: [{ role: "user", content: userMessage }],
+  const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: OPENROUTER_MODEL,
+      max_tokens: 1024,
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        { role: "user", content: userMessage },
+      ],
+    }),
   });
 
-  const command = new InvokeModelCommand({
-    modelId: MODEL_ID,
-    contentType: "application/json",
-    accept: "application/json",
-    body: new TextEncoder().encode(requestBody),
-  });
+  if (!res.ok) {
+    const errBody = await res.text();
+    throw new Error(`OpenRouter API error ${res.status}: ${errBody}`);
+  }
 
-  const response = await runtimeClient.send(command);
-  const responseBody = JSON.parse(new TextDecoder().decode(response.body));
-  let assistantText = responseBody.content[0].text.trim();
-  
-  // Strip markdown fences in case Claude returns them despite the prompt
-  assistantText = assistantText.replace(/^```json\s*/i, "").replace(/^```\s*/, "").replace(/```$/i, "").trim();
+  const data = await res.json();
+  let assistantText = data.choices[0].message.content.trim();
 
-  return JSON.parse(assistantText);
+  // Strip markdown fences in case the model returns them despite the prompt
+  assistantText = assistantText.replace(/^```json\s*/i, "").replace(/^```\s*/, "").replace(/```\s*$/i, "").trim();
+
+  const jsonMatch = assistantText.match(/\{[\s\S]*\}/);
+  if (!jsonMatch) throw new Error("LLM response did not contain valid JSON");
+
+  return JSON.parse(jsonMatch[0]);
 }
 
 export async function POST(request: Request) {

@@ -2,7 +2,7 @@ name: Deploy to EC2
 
 on:
   push:
-    branches: [master]
+    branches: [master, deploy-to-ec2]
 
 jobs:
   deploy:
@@ -13,12 +13,17 @@ jobs:
           EC2_HOST: ${{ secrets.EC2_HOST }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           BRANCH: ${{ github.ref_name }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ secrets.OPENROUTER_MODEL }}
         run: |
           echo "${SSH_PRIVATE_KEY}" > key.pem
           chmod 600 key.pem
           ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${EC2_HOST} << ENDSSH
             sudo chown -R ec2-user:ec2-user ~/app
             cd ~/app
+            sed -i '/^OPENROUTER_/d' .env.local 2>/dev/null || true
+            echo 'OPENROUTER_API_KEY=${OPENROUTER_API_KEY}' >> .env.local
+            echo 'OPENROUTER_MODEL=${OPENROUTER_MODEL}' >> .env.local
             git config --global --add safe.directory ~/app
             git fetch origin
             git checkout ${BRANCH}
