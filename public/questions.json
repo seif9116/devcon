@@ -35,7 +35,10 @@
               "Seulement s'ils portent des armes"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "licensing-requirements-alberta-security-professionals"
+          ]
         },
         {
           "id": "m1q2",
@@ -68,7 +71,10 @@
               "Les clients, les employés et les visiteurs"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "roles-and-responsibilities-security-professionals"
+          ]
         },
         {
           "id": "m1q3",
@@ -101,7 +107,10 @@
               "Surveiller, poursuivre et détenir"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "roles-and-responsibilities-security-professionals"
+          ]
         },
         {
           "id": "m1q4",
@@ -134,7 +143,10 @@
               "Seulement dans les 30 jours"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "public-complaints-process-security-professionals"
+          ]
         },
         {
           "id": "m1q5",
@@ -167,7 +179,10 @@
               "Seulement au sein de la même entreprise"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "licensing-requirements-alberta-security-professionals"
+          ]
         },
         {
           "id": "m1q6",
@@ -200,7 +215,11 @@
               "Seulement avec une autorisation spéciale"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "licensing-requirements-alberta-security-professionals",
+            "professional-conduct-security-industry"
+          ]
         },
         {
           "id": "m1q7",
@@ -233,7 +252,10 @@
               "19 ans"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "licensing-requirements-alberta-security-professionals"
+          ]
         },
         {
           "id": "m1q8",
@@ -266,7 +288,10 @@
               "Le ministre de la Sécurité publique"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "public-complaints-process-security-professionals"
+          ]
         },
         {
           "id": "m1q9",
@@ -299,7 +324,10 @@
               "Section 18"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "ssia-obligations-reporting-requirements"
+          ]
         },
         {
           "id": "m1q10",
@@ -332,7 +360,10 @@
               "120 jours"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "public-complaints-process-security-professionals"
+          ]
         },
         {
           "id": "m1q11",
@@ -365,7 +396,10 @@
               "Seulement pour un maximum de 30 jours"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "licensing-requirements-alberta-security-professionals"
+          ]
         },
         {
           "id": "m1q12",
@@ -398,7 +432,10 @@
               "Seulement pour les infractions graves"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "licensing-requirements-alberta-security-professionals"
+          ]
         }
       ]
     },
@@ -437,7 +474,10 @@
               "Section 10"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "charter-rights-security-professionals"
+          ]
         },
         {
           "id": "m2q2",
@@ -470,7 +510,11 @@
               "Non, mais ils ont plus d'autorité que les citoyens"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "roles-and-responsibilities-security-professionals",
+            "charter-rights-security-professionals"
+          ]
         },
         {
           "id": "m2q3",
@@ -503,7 +547,10 @@
               "Quand son superviseur le lui dit"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "citizen-power-of-arrest"
+          ]
         },
         {
           "id": "m2q4",
@@ -536,7 +583,11 @@
               "Le libérer après avoir obtenu ses informations"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "how-to-make-lawful-arrest",
+            "citizen-power-of-arrest"
+          ]
         },
         {
           "id": "m2q5",
@@ -569,7 +620,11 @@
               "Oui, mais seulement si quelqu'un est gravement blessé"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "use-of-force-principles",
+            "exceeding-authority-consequences"
+          ]
         },
         {
           "id": "m2q6",
@@ -602,7 +657,10 @@
               "Causer un trouble"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "criminal-code-offence-types"
+          ]
         },
         {
           "id": "m2q7",
@@ -635,7 +693,10 @@
               "Lorsque la personne met l'article dans son sac"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "theft-break-enter-offences"
+          ]
         },
         {
           "id": "m2q8",
@@ -668,7 +729,10 @@
               "Chaque fois qu'il est sur une propriété privée"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "search-seizure-security-work"
+          ]
         },
         {
           "id": "m2q9",
@@ -701,7 +765,10 @@
               "Petty Trespass Act"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "charter-rights-security-professionals"
+          ]
         },
         {
           "id": "m2q10",
@@ -734,7 +801,10 @@
               "N'importe qui peut arrêter pour dommages à la propriété"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "citizen-power-of-arrest"
+          ]
         }
       ]
     },
@@ -773,7 +843,10 @@
               "Se rappeler les informations avec précision"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "observation-skills-security-professionals"
+          ]
         },
         {
           "id": "m3q2",
@@ -806,7 +879,10 @@
               "Uniquement les numéros de contact d'urgence"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "post-orders-understanding-responsibilities"
+          ]
         },
         {
           "id": "m3q3",
@@ -839,7 +915,10 @@
               "Surveillance à distance"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "patrol-procedures-best-practices"
+          ]
         },
         {
           "id": "m3q4",
@@ -872,7 +951,10 @@
               "Non, les cartes d'identité sont uniquement à des fins d'identification"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "access-control-procedures"
+          ]
         },
         {
           "id": "m3q5",
@@ -905,7 +987,10 @@
               "Appeler immédiatement des renforts d'urgence"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "crowd-control-strategies"
+          ]
         },
         {
           "id": "m3q6",
@@ -938,7 +1023,11 @@
               "Répondre seulement aux questions de base sur l'information publique"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "professional-conduct-security-industry",
+            "post-orders-understanding-responsibilities"
+          ]
         },
         {
           "id": "m3q7",
@@ -971,7 +1060,10 @@
               "Chaque fois qu'une personne refuse de se conformer"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "use-of-force-response-principles"
+          ]
         },
         {
           "id": "m3q8",
@@ -1004,7 +1096,10 @@
               "Regarder, écouter, documenter"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "observation-skills-security-professionals"
+          ]
         },
         {
           "id": "m3q9",
@@ -1037,7 +1132,11 @@
               "Leur demander de se calmer et de partir"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "use-of-force-response-principles",
+            "personal-safety-fundamentals-security-professionals"
+          ]
         },
         {
           "id": "m3q10",
@@ -1070,7 +1169,10 @@
               "Discuter de problèmes personnels avec des collègues"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "starting-and-ending-security-shifts"
+          ]
         },
         {
           "id": "m3q11",
@@ -1103,7 +1205,10 @@
               "Lorsque le sujet entre dans le magasin"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "loss-prevention-surveillance-techniques"
+          ]
         },
         {
           "id": "m3q12",
@@ -1136,7 +1241,10 @@
               "Surveiller la productivité des employés"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "patrol-procedures-best-practices"
+          ]
         }
       ]
     },
@@ -1175,7 +1283,10 @@
               "Seule la communication non verbale est utilisée"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "verbal-and-non-verbal-communication-strategies"
+          ]
         },
         {
           "id": "m4q2",
@@ -1208,7 +1319,11 @@
               "Seulement à l'extérieur"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "verbal-and-non-verbal-communication-strategies",
+            "communicating-with-uncooperative-persons"
+          ]
         },
         {
           "id": "m4q3",
@@ -1241,7 +1356,11 @@
               "Les uniformes n'ont pas d'importance"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "professional-appearance-deportment-security",
+            "verbal-and-non-verbal-communication-strategies"
+          ]
         },
         {
           "id": "m4q4",
@@ -1274,7 +1393,10 @@
               "Cela signifie tout écrire"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "verbal-and-non-verbal-communication-strategies"
+          ]
         },
         {
           "id": "m4q5",
@@ -1307,7 +1429,11 @@
               "Seulement en privé"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "managing-personal-triggers",
+            "communicating-with-uncooperative-persons"
+          ]
         },
         {
           "id": "m4q6",
@@ -1340,7 +1466,10 @@
               "Leur dire seulement après la fin"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "conducting-effective-interviews"
+          ]
         },
         {
           "id": "m4q7",
@@ -1373,7 +1502,10 @@
               "Listen, Evaluate, Argue, Persuade, Solve"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "leaps-communication-method"
+          ]
         },
         {
           "id": "m4q8",
@@ -1406,7 +1538,10 @@
               "100%"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "verbal-and-non-verbal-communication-strategies"
+          ]
         },
         {
           "id": "m4q9",
@@ -1439,7 +1574,10 @@
               "Écoute active"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "overcoming-communication-barriers"
+          ]
         },
         {
           "id": "m4q10",
@@ -1472,7 +1610,10 @@
               "Forte"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "verbal-and-non-verbal-communication-strategies"
+          ]
         }
       ]
     },
@@ -1511,7 +1652,10 @@
               "Seulement si approuvé par le superviseur"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "notebook-fundamentals-security-professionals"
+          ]
         },
         {
           "id": "m5q2",
@@ -1544,7 +1688,10 @@
               "Seulement si la page est vierge"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "notebook-fundamentals-security-professionals"
+          ]
         },
         {
           "id": "m5q3",
@@ -1577,7 +1724,11 @@
               "Abréviations de fuseau horaire"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "24-hour-clock-security-reporting",
+            "notebook-fundamentals-security-professionals"
+          ]
         },
         {
           "id": "m5q4",
@@ -1610,7 +1761,10 @@
               "Seulement pour les incidents importants"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "notebook-fundamentals-security-professionals"
+          ]
         },
         {
           "id": "m5q5",
@@ -1643,7 +1797,10 @@
               "Un document financier"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "obtaining-statements-security-interviews"
+          ]
         },
         {
           "id": "m5q6",
@@ -1676,7 +1833,10 @@
               "Seulement si l'employeur est d'accord"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "preparing-for-court-testimony"
+          ]
         },
         {
           "id": "m5q7",
@@ -1709,7 +1869,10 @@
               "N'importe quel outil d'écriture"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "notebook-fundamentals-security-professionals"
+          ]
         },
         {
           "id": "m5q8",
@@ -1742,7 +1905,10 @@
               "Déchirer la page"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "notebook-fundamentals-security-professionals"
+          ]
         },
         {
           "id": "m5q9",
@@ -1775,7 +1941,10 @@
               "7 jours"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "mandatory-reporting-requirements-registrar"
+          ]
         },
         {
           "id": "m5q10",
@@ -1808,7 +1977,11 @@
               "Rumeurs et ouï-dire"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "objective-vs-subjective-reporting",
+            "notebook-fundamentals-security-professionals"
+          ]
         },
         {
           "id": "m5q11",
@@ -1841,7 +2014,10 @@
               "Nettoyer la scène"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "evidence-preservation-crime-scenes"
+          ]
         },
         {
           "id": "m5q12",
@@ -1874,7 +2050,10 @@
               "Citation"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "preparing-for-court-testimony"
+          ]
         }
       ]
     },
@@ -1913,7 +2092,11 @@
               "Seulement dans les bâtiments commerciaux"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "alarm-system-components-and-functions",
+            "responding-to-alarm-activations"
+          ]
         },
         {
           "id": "m6q2",
@@ -1946,7 +2129,10 @@
               "Seulement après avoir appelé les superviseurs"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "fire-emergency-procedures"
+          ]
         },
         {
           "id": "m6q3",
@@ -1979,7 +2165,11 @@
               "Seulement si demandé par les superviseurs"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "responding-to-alarm-activations",
+            "notebook-fundamentals-security-professionals"
+          ]
         },
         {
           "id": "m6q4",
@@ -2012,7 +2202,10 @@
               "Seulement les incendies extérieurs"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "fire-emergency-procedures"
+          ]
         },
         {
           "id": "m6q5",
@@ -2045,7 +2238,10 @@
               "Seulement dans les zones publiques"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "bomb-threat-response-protocol"
+          ]
         },
         {
           "id": "m6q6",
@@ -2078,7 +2274,11 @@
               "Seulement si le bâtiment est bondé"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "fire-emergency-procedures",
+            "emergency-scene-management-principles"
+          ]
         },
         {
           "id": "m6q7",
@@ -2111,7 +2311,10 @@
               "Fil, batterie, interrupteur"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "alarm-system-components-and-functions"
+          ]
         },
         {
           "id": "m6q8",
@@ -2144,7 +2347,10 @@
               "Point, Activate, Spray, Save"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "fire-emergency-procedures"
+          ]
         },
         {
           "id": "m6q9",
@@ -2177,7 +2383,10 @@
               "Classe D"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "fire-emergency-procedures"
+          ]
         },
         {
           "id": "m6q10",
@@ -2210,7 +2419,10 @@
               "100 mètres"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "bomb-threat-response-protocol"
+          ]
         },
         {
           "id": "m6q11",
@@ -2243,7 +2455,11 @@
               "Plans du bâtiment"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "responding-to-alarm-activations",
+            "post-orders-understanding-responsibilities"
+          ]
         },
         {
           "id": "m6q12",
@@ -2276,7 +2492,11 @@
               "Seulement si demandé par la direction"
             ],
             "answer": 0
-          }
+          },
+          "conceptPages": [
+            "emergency-scene-management-principles",
+            "fire-emergency-procedures"
+          ]
         }
       ]
     },
@@ -2315,7 +2535,10 @@
               "Aucun risque"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "risk-assessment-security-sites"
+          ]
         },
         {
           "id": "m7q2",
@@ -2348,7 +2571,10 @@
               "Non, sauf si vous êtes très fatigué"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "sleep-management-shift-workers"
+          ]
         },
         {
           "id": "m7q3",
@@ -2381,7 +2607,10 @@
               "Socialiser uniquement avec les travailleurs de jour"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "maintaining-social-life-shift-work"
+          ]
         },
         {
           "id": "m7q4",
@@ -2414,7 +2643,10 @@
               "Cela rend le travail plus difficile"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "shift-work-health-strategies"
+          ]
         },
         {
           "id": "m7q5",
@@ -2447,7 +2679,10 @@
               "La police"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "risk-assessment-security-sites"
+          ]
         },
         {
           "id": "m7q6",
@@ -2480,7 +2715,10 @@
               "Seulement s'il n'y a pas de signal téléphonique"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "identifying-workplace-hazards"
+          ]
         },
         {
           "id": "m7q7",
@@ -2513,7 +2751,10 @@
               "Risque critique"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "risk-assessment-security-sites"
+          ]
         },
         {
           "id": "m7q8",
@@ -2546,7 +2787,10 @@
               "Danger de matériau"
             ],
             "answer": 2
-          }
+          },
+          "conceptPages": [
+            "identifying-workplace-hazards"
+          ]
         },
         {
           "id": "m7q9",
@@ -2579,7 +2823,10 @@
               "Seulement les foules la nuit"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "identifying-workplace-hazards"
+          ]
         },
         {
           "id": "m7q10",
@@ -2612,7 +2859,10 @@
               "Ils devraient sauter leur repas principal"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "shift-work-health-strategies"
+          ]
         },
         {
           "id": "m7q11",
@@ -2645,7 +2895,10 @@
               "Refuser de porter des uniformes"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "personal-safety-fundamentals-security-professionals"
+          ]
         },
         {
           "id": "m7q12",
@@ -2678,7 +2931,11 @@
               "Éviter tout contact avec les autres"
             ],
             "answer": 1
-          }
+          },
+          "conceptPages": [
+            "communication-safety-protocols",
+            "personal-safety-fundamentals-security-professionals"
+          ]
         }
       ]
     }
