@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { QuestionsData, Question, QuestionLevel, QuestionProgress } from "@/lib/types";
 import { getQuestionProgress, updateQuestionProgress } from "@/lib/progress";
 import questionsData from "@/public/questions.json";
+import { playDing, playClunk, playLevelUp } from "@/lib/sounds";
 
 type Phase = "answering" | "correct" | "wrong" | "confidence";
 
@@ -72,14 +73,17 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
     setSelectedAnswer(optionIndex);
     if (optionIndex === currentLevel.answer) {
       if (qProgress.level === 3) {
+        playLevelUp();
         const updated: QuestionProgress = { level: 3, completed: true };
         updateQuestionProgress(mod!.id, question.id, updated);
         setProgressMap((prev) => ({ ...prev, [question.id]: updated }));
         setPhase("correct");
       } else {
+        playDing();
         setPhase("confidence");
       }
     } else {
+      playClunk();
       const newLevel = Math.max(1, qProgress.level - 1) as 1 | 2 | 3;
       const updated: QuestionProgress = { level: newLevel, completed: false };
       updateQuestionProgress(mod!.id, question.id, updated);
@@ -90,6 +94,7 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
 
   function handleConfidence(confident: boolean) {
     if (confident) {
+      playLevelUp();
       const newLevel = Math.min(3, qProgress.level + 1) as 1 | 2 | 3;
       const updated: QuestionProgress = { level: newLevel, completed: false };
       updateQuestionProgress(mod!.id, question.id, updated);
@@ -172,7 +177,7 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
                 }
               } else {
                 cls +=
-                  " border-gray-200 hover:border-blue-400 hover:bg-blue-50 cursor-pointer";
+                  " border-gray-200 hover:border-blue-400 hover:bg-blue-50 cursor-pointer shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]";
               }
               return (
                 <button
