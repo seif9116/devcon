@@ -51,7 +51,7 @@ export default function Home() {
         </div>
 
         <h1 className="text-5xl font-bold text-white mb-3 tracking-tight">
-          DevCon
+          GuardPrep Pro
         </h1>
         <p className="text-blue-200/80 mb-10 text-lg leading-relaxed">
           Alberta Basic Security Training
