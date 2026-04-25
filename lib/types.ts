@@ -9,6 +9,19 @@ export interface Question {
   level1: QuestionLevel;
   level2: QuestionLevel;
   level3: QuestionLevel;
+  conceptPages?: string[];
+}
+
+export interface WikiPage {
+  slug: string;
+  title: string;
+  moduleId: number;
+  body: string;
+  relatedSlugs: string[];
+}
+
+export interface WikiData {
+  pages: WikiPage[];
 }
 
 export interface Module {

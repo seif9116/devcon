@@ -310,6 +310,23 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
             </button>
           </div>
 
+          {/* Learn more links */}
+          {question.conceptPages && question.conceptPages.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-6">
+              {question.conceptPages.map((slug) => (
+                <a
+                  key={slug}
+                  href={`/wiki?page=${slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-blue-500 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded-full transition-colors"
+                >
+                  📖 {slug.replace(/-/g, " ")}
+                </a>
+              ))}
+            </div>
+          )}
+
           {/* Options */}
           <div className="space-y-4" key={`${question.id}-${attempt}`}>
             {currentLevel.options.map((opt, i) => {
