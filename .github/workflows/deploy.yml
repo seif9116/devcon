@@ -26,6 +26,8 @@ jobs:
             npm ci
             npm run build
             pkill -f "next start" || true
+            sudo pkill -f "next-server" || true
+            sleep 2
             HOST=0.0.0.0 PORT=3000 nohup npm start > /tmp/app.log 2>&1 &
           ENDSSH
           rm key.pem
