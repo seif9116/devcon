@@ -8,8 +8,8 @@ import {
 } from "@aws-sdk/client-bedrock-runtime";
 
 const KB_ID = "SBTCWY1W77";
-const REGION = "us-east-1";
-const MODEL_ID = "us.anthropic.claude-opus-4-6-v1";
+const REGION = process.env.AWS_REGION || "us-east-1";
+const MODEL_ID = "us.anthropic.claude-3-haiku-20240307-v1:0";
 
 const SYSTEM_PROMPT =
   "You are an evaluator for security guard exam preparation. " +
@@ -26,8 +26,14 @@ const SYSTEM_PROMPT =
   '{"english":{"score":N,"feedback":"..."},"concepts":{"score":N,"feedback":"..."}}\n\n' +
   "Keep feedback to 1-2 sentences each.";
 
-const agentClient = new BedrockAgentRuntimeClient({ region: REGION });
-const runtimeClient = new BedrockRuntimeClient({ region: REGION });
+const credentials = {
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+  ...(process.env.AWS_SESSION_TOKEN ? { sessionToken: process.env.AWS_SESSION_TOKEN } : {}),
+};
+
+const agentClient = new BedrockAgentRuntimeClient({ region: REGION, credentials });
+const runtimeClient = new BedrockRuntimeClient({ region: REGION, credentials });
 
 async function retrieveContext(query: string): Promise<string> {
   try {
