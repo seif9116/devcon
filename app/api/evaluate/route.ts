@@ -8,8 +8,8 @@ import {
 } from "@aws-sdk/client-bedrock-runtime";
 
 const KB_ID = "SBTCWY1W77";
-const REGION = process.env.AWS_REGION || "us-east-1";
-const MODEL_ID = "us.anthropic.claude-3-haiku-20240307-v1:0";
+const REGION = process.env.AWS_DEFAULT_REGION || process.env.AWS_REGION || "us-west-2";
+const MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
 
 const SYSTEM_PROMPT =
   "You are an evaluator for security guard exam preparation. " +
@@ -26,14 +26,22 @@ const SYSTEM_PROMPT =
   '{"english":{"score":N,"feedback":"..."},"concepts":{"score":N,"feedback":"..."}}\n\n' +
   "Keep feedback to 1-2 sentences each.";
 
-const credentials = {
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-  ...(process.env.AWS_SESSION_TOKEN ? { sessionToken: process.env.AWS_SESSION_TOKEN } : {}),
-};
+if (!process.env.AWS_ACCESS_KEY_ID) {
+  console.warn("⚠️ AWS credentials not found in env variables! TTS and Evaluate will fail unless you exported them or set them in .env.local");
+}
 
-const agentClient = new BedrockAgentRuntimeClient({ region: REGION, credentials });
-const runtimeClient = new BedrockRuntimeClient({ region: REGION, credentials });
+const credentialsConfig = process.env.AWS_ACCESS_KEY_ID
+  ? {
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+        ...(process.env.AWS_SESSION_TOKEN ? { sessionToken: process.env.AWS_SESSION_TOKEN } : {}),
+      },
+    }
+  : {};
+
+const agentClient = new BedrockAgentRuntimeClient({ region: REGION, ...credentialsConfig });
+const runtimeClient = new BedrockRuntimeClient({ region: REGION, ...credentialsConfig });
 
 async function retrieveContext(query: string): Promise<string> {
   try {
@@ -113,7 +121,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Evaluation error:", error);
     return Response.json(
-      { error: "Evaluation failed. Please try again." },
+      { error: `Evaluation failed: ${error instanceof Error ? error.message : String(error)}` },
       { status: 500 }
     );
   }
