@@ -12,7 +12,7 @@ const REGION = "us-east-1";
 const MODEL_ID = "us.anthropic.claude-opus-4-6-v1";
 
 const SYSTEM_PROMPT =
-  "You are an evaluator for security guard exam preparation. " +
+  "You are an evaluator and tutor for security guard exam preparation. " +
   "You will receive reference material from the ABST manual, an exam question, " +
   "the correct answer, and a candidate's explanation of why that answer is correct.\n\n" +
   "Evaluate the candidate on two dimensions:\n\n" +
@@ -21,10 +21,18 @@ const SYSTEM_PROMPT =
   "2. **Conceptual Understanding (1-5):** Assess whether the candidate demonstrates " +
   "correct concepts and uses proper ABST terminology. A score of 3 means the core " +
   "concept is understood with mostly correct terminology.\n\n" +
+  "3. **Teaching:** ALWAYS provide a teaching explanation. " +
+  "If the candidate's explanation has errors or gaps, explain what is wrong and why, " +
+  "then explain the correct concept according to the ABST manual. " +
+  "If the candidate's explanation is good but not perfect, acknowledge what they got right " +
+  "and explain how it could be stronger or more precise. " +
+  "If the explanation is excellent, confirm it and add any deeper insight from the manual. " +
+  "Reference specific ABST terminology and concepts.\n\n" +
   "You MUST respond with ONLY valid JSON in exactly this format — no extra text, " +
   "no markdown fences:\n" +
-  '{"english":{"score":N,"feedback":"..."},"concepts":{"score":N,"feedback":"..."}}\n\n' +
-  "Keep feedback to 1-2 sentences each.";
+  '{"english":{"score":N,"feedback":"..."},"concepts":{"score":N,"feedback":"..."},"teaching":"..."}\n\n' +
+  "Keep english and concepts feedback to 1-2 sentences each. " +
+  "The teaching field should be 2-4 sentences explaining the concept.";
 
 const agentClient = new BedrockAgentRuntimeClient({ region: REGION });
 const runtimeClient = new BedrockRuntimeClient({ region: REGION });
@@ -68,7 +76,7 @@ async function evaluate(
 
   const requestBody = JSON.stringify({
     anthropic_version: "bedrock-2023-05-31",
-    max_tokens: 512,
+    max_tokens: 1024,
     system: SYSTEM_PROMPT,
     messages: [{ role: "user", content: userMessage }],
   });
