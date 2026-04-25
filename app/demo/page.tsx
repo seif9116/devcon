@@ -161,12 +161,20 @@ export default function DemoPage() {
       <div className="max-w-2xl w-full">
         {/* Header Setup */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-          <button
-            onClick={() => router.push("/modules")}
-            className="text-gray-400 hover:text-gray-600 transition-colors text-sm flex items-center gap-1"
-          >
-            <span>←</span> Back to Modules
-          </button>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => router.push("/modules")}
+              className="text-gray-400 hover:text-gray-600 transition-colors text-sm flex items-center gap-1"
+            >
+              <span>←</span> Back to Modules
+            </button>
+            <button
+              onClick={() => router.push("/wiki")}
+              className="bg-blue-50 text-blue-600 px-3 py-1.5 rounded-lg text-sm font-semibold hover:bg-blue-100 transition-colors"
+            >
+              📖 Wiki
+            </button>
+          </div>
           
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-500 font-medium">Demo Level Controller:</span>
@@ -234,6 +242,23 @@ export default function DemoPage() {
               </svg>
             </button>
           </div>
+
+          {/* Learn more links */}
+          {question.conceptPages && question.conceptPages.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-6">
+              {question.conceptPages.map((slug) => (
+                <a
+                  key={slug}
+                  href={`/wiki?page=${slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-blue-500 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded-full transition-colors"
+                >
+                  📖 {slug.replace(/-/g, " ")}
+                </a>
+              ))}
+            </div>
+          )}
 
           {/* Options */}
           <div className="space-y-4 relative z-10">
