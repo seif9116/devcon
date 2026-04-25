@@ -9,7 +9,7 @@ import {
 
 const KB_ID = "SBTCWY1W77";
 const REGION = process.env.AWS_DEFAULT_REGION || process.env.AWS_REGION || "us-west-2";
-const MODEL_ID = "anthropic.claude-sonnet-4-20250514-v1:0";
+const MODEL_ID = "us.anthropic.claude-sonnet-4-20250514-v1:0";
 
 const SYSTEM_PROMPT =
   "You are a STRICT AND RIGOROUS evaluator and tutor for security guard exam preparation. " +
