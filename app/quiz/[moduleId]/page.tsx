@@ -137,7 +137,14 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
           userExplanation: explanation,
         }),
       });
-      if (!res.ok) throw new Error("Evaluation failed");
+      if (!res.ok) {
+        let errMessage = "Evaluation failed";
+        try {
+          const body = await res.json();
+          if (body.error) errMessage = body.error;
+        } catch {}
+        throw new Error(errMessage);
+      }
       const data = await res.json();
       setEvaluationResult(data);
       const passed = data.english.score >= 3 && data.concepts.score >= 3;
@@ -147,8 +154,9 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
         setProgressMap((prev) => ({ ...prev, [question.id]: updated }));
       }
       setPhase("results");
-    } catch {
-      setEvalError("Something went wrong. Please try again.");
+    } catch (err: any) {
+      console.error(err);
+      setEvalError(err.message || "Something went wrong. Please try again.");
       setPhase("explain");
     }
   }

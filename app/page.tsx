@@ -75,7 +75,7 @@ export default function Home() {
         </button>
 
         <p className="text-blue-300/40 text-xs mt-8">
-          Built for hackathon by the DevCon team
+          Master your Alberta security training with adaptive flashcards
         </p>
       </div>
 
