@@ -36,9 +36,17 @@ export default function ModulesPage() {
           >
             <span>←</span> Home
           </button>
-          <h1 className="text-3xl font-bold text-gray-900 tracking-tight mb-1">
-            Modules
-          </h1>
+          <div className="flex items-center justify-between mb-1">
+            <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
+              Modules
+            </h1>
+            <button
+              onClick={() => router.push("/wiki")}
+              className="bg-blue-50 text-blue-600 px-4 py-2 rounded-xl text-sm font-semibold hover:bg-blue-100 transition-colors flex items-center gap-1.5"
+            >
+              📖 Wiki
+            </button>
+          </div>
           <p className="text-gray-500 mb-4">Pick a module to study</p>
 
           {/* Overall progress */}

@@ -12,7 +12,7 @@ const REGION = process.env.AWS_DEFAULT_REGION || process.env.AWS_REGION || "us-w
 const MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
 
 const SYSTEM_PROMPT =
-  "You are a STRICT AND RIGOROUS evaluator for security guard exam preparation. " +
+  "You are a STRICT AND RIGOROUS evaluator and tutor for security guard exam preparation. " +
   "You will receive reference material from the ABST modules, an exam question, " +
   "the correct answer, and a candidate's explanation of why that answer is correct.\n\n" +
   "Evaluate the candidate rigorously on two dimensions. HARSHLY PENALIZE low-effort answers. " +
@@ -22,11 +22,18 @@ const SYSTEM_PROMPT =
   "2. **Conceptual Understanding (1-5):** Assess whether the candidate demonstrates " +
   "correct concepts and uses proper ABST terminology. A score of 3 means the core " +
   "concept is understood with mostly correct terminology.\n\n" +
+  "3. **Teaching:** ALWAYS provide a teaching explanation. " +
+  "If the candidate's explanation has errors or gaps, explain what is wrong and why, " +
+  "then explain the correct concept according to the ABST modules. " +
+  "If the candidate's explanation is good but not perfect, acknowledge what they got right " +
+  "and explain how it could be stronger or more precise. " +
+  "If the explanation is excellent, confirm it and add any deeper insight from the modules. " +
+  "Reference specific ABST terminology and concepts.\n\n" +
   "You MUST incorporate feedback from the provided module reference material in your explanation. " +
   "Please limit your total feedback text to a maximum of 350 words.\n\n" +
   "You MUST respond with ONLY valid JSON in exactly this format — no extra text, " +
   "no markdown fences:\n" +
-  '{"english":{"score":N,"feedback":"..."},"concepts":{"score":N,"feedback":"..."}}';
+  '{"english":{"score":N,"feedback":"..."},"concepts":{"score":N,"feedback":"..."},"teaching":"..."}';
 
 if (!process.env.AWS_ACCESS_KEY_ID) {
   console.warn("⚠️ AWS credentials not found in env variables! TTS and Evaluate will fail unless you exported them or set them in .env.local");
@@ -82,7 +89,7 @@ async function evaluate(
 
   const requestBody = JSON.stringify({
     anthropic_version: "bedrock-2023-05-31",
-    max_tokens: 512,
+    max_tokens: 1024,
     system: SYSTEM_PROMPT,
     messages: [{ role: "user", content: userMessage }],
   });
