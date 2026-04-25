@@ -1,7 +1,6 @@
 {
-  "kb_id": "SBTCWY1W77",
-  "region": "us-east-1",
+  "kb_id": "FCF1GEJPXT",
+  "region": "us-west-2",
   "collection_name": "devcon-abst-vectors",
-  "bucket_name": "devcon-abst-pdf-975050247261",
-  "lambda_url": "https://63tnekkygkwir5vorf2x6xs7ee0uvdxt.lambda-url.us-east-1.on.aws/"
+  "bucket_name": "devcon-abst-pdf-975050247261"
 }

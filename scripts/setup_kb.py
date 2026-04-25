@@ -20,9 +20,9 @@ from requests_aws4auth import AWS4Auth
 # Constants
 # ---------------------------------------------------------------------------
 
-REGION = "us-east-1"
+REGION = "us-west-2"
 ACCOUNT_ID = "975050247261"
-BUCKET_NAME = f"devcon-abst-pdf-{ACCOUNT_ID}"
+BUCKET_NAME = f"devcon-abst-pdf-{ACCOUNT_ID}-west2"
 KB_NAME = "devcon-abst-kb"
 KB_ROLE_NAME = "devcon-abst-kb-role"
 EMBEDDING_MODEL = "amazon.titan-embed-text-v2:0"
@@ -223,13 +223,19 @@ def create_aoss_collection():
     except Exception as e:
         if "ConflictException" in str(type(e).__name__) or "already exists" in str(e).lower() or "ConflictException" in str(e):
             print(f"  Data access policy already exists, updating...")
-            aoss.update_access_policy(
-                name=access_policy_name,
-                type="data",
-                policy=access_policy_doc,
-                policyVersion=aoss.get_access_policy(name=access_policy_name, type="data")["accessPolicyDetail"]["policyVersion"],
-            )
-            print(f"  Updated data access policy: {access_policy_name}")
+            try:
+                aoss.update_access_policy(
+                    name=access_policy_name,
+                    type="data",
+                    policy=access_policy_doc,
+                    policyVersion=aoss.get_access_policy(name=access_policy_name, type="data")["accessPolicyDetail"]["policyVersion"],
+                )
+                print(f"  Updated data access policy: {access_policy_name}")
+            except Exception as update_err:
+                if "No changes detected" in str(update_err):
+                    print(f"  Data access policy unchanged: {access_policy_name}")
+                else:
+                    raise
         else:
             raise
 
@@ -373,6 +379,8 @@ def create_knowledge_base(role_arn, collection_arn, endpoint):
     try:
         os_client.indices.create(index=INDEX_NAME, body=index_body)
         print(f"  Created AOSS index: {INDEX_NAME}")
+        print("  Waiting 30s for index to propagate...")
+        time.sleep(30)
     except Exception as e:
         if "resource_already_exists_exception" in str(e).lower() or "already exists" in str(e).lower():
             print(f"  Index already exists: {INDEX_NAME}")

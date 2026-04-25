@@ -47,3 +47,6 @@ next-env.d.ts
 /docs/superpowers/
 /stitch-output/
 generate-ui.mjs
+
+# worktrees
+/.worktrees/
