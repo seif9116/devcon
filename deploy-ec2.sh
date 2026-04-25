@@ -51,6 +51,7 @@ INSTANCE_ID=$(aws ec2 run-instances \
   --image-id "${AMI_ID}" \
   --instance-type "${INSTANCE_TYPE}" \
   --security-group-ids "${SG_ID}" \
+  --key-name devcon \
   --user-data "${USER_DATA}" \
   --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${APP_NAME}}]" \
   --query 'Instances[0].InstanceId' \
