@@ -16,7 +16,9 @@ jobs:
           echo "${SSH_PRIVATE_KEY}" > key.pem
           chmod 600 key.pem
           ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${EC2_HOST} << 'EOF'
+            sudo chown -R ec2-user:ec2-user ~/app
             cd ~/app
+            git config --global --add safe.directory ~/app
             git pull
             npm ci
             npm run build
