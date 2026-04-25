@@ -9,7 +9,7 @@ import {
 
 const KB_ID = "SBTCWY1W77";
 const REGION = process.env.AWS_DEFAULT_REGION || process.env.AWS_REGION || "us-west-2";
-const MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
+const MODEL_ID = "anthropic.claude-sonnet-4-20250514-v1:0";
 
 const SYSTEM_PROMPT =
   "You are a STRICT AND RIGOROUS evaluator and tutor for security guard exam preparation. " +
@@ -128,10 +128,6 @@ export async function POST(request: Request) {
     const searchQuery = `${questionText} ${correctAnswer}`;
     const reference = await retrieveContext(searchQuery);
     const result = await evaluate(reference, questionText, correctAnswer, userExplanation);
-
-    if (!result.teaching) {
-      result.teaching = `The correct answer is "${correctAnswer}". Review the ABST module material for this topic to strengthen your understanding.`;
-    }
 
     return Response.json(result);
   } catch (error) {
