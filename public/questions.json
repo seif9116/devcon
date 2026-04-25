@@ -1,0 +1,2686 @@
+{
+  "modules": [
+    {
+      "id": 1,
+      "name": "Introduction to the Security Industry",
+      "questions": [
+        {
+          "id": "m1q1",
+          "level3": {
+            "text": "Only security professionals working in public buildings require a licence in Alberta.",
+            "options": [
+              "True",
+              "False",
+              "Only if working more than 20 hours per week",
+              "Only if carrying weapons"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Only guards who work in public buildings need a licence.",
+            "options": [
+              "Yes, this is true",
+              "No, this is false",
+              "Only if they work many hours",
+              "Only if they have weapons"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Seuls les professionnels de la sécurité travaillant dans des bâtiments publics ont besoin d'un permis en Alberta.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement s'ils travaillent plus de 20 heures par semaine",
+              "Seulement s'ils portent des armes"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m1q2",
+          "level3": {
+            "text": "What are the three main things that security professionals protect?",
+            "options": [
+              "Persons, property, and information",
+              "Buildings, money, and vehicles",
+              "Doors, windows, and gates",
+              "Clients, employees, and visitors"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "What three things do security guards protect?",
+            "options": [
+              "People, property, and information",
+              "Buildings, money, and cars",
+              "Doors, windows, and gates",
+              "Clients, workers, and visitors"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Quelles sont les trois principales choses que les professionnels de la sécurité protègent?",
+            "options": [
+              "Les personnes, la propriété et l'information",
+              "Les bâtiments, l'argent et les véhicules",
+              "Les portes, les fenêtres et les grilles",
+              "Les clients, les employés et les visiteurs"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m1q3",
+          "level3": {
+            "text": "What is the primary role of a security professional?",
+            "options": [
+              "Arrest, detain, and report",
+              "Observe, deter, and report",
+              "Patrol, investigate, and arrest",
+              "Monitor, chase, and detain"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "What is the main job of a security guard?",
+            "options": [
+              "Arrest people, hold them, and report",
+              "Watch, stop crime, and report",
+              "Walk around, investigate, and arrest",
+              "Watch, chase, and hold people"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Quel est le rôle principal d'un professionnel de la sécurité?",
+            "options": [
+              "Arrêter, détenir et signaler",
+              "Observer, dissuader et signaler",
+              "Patrouiller, enquêter et arrêter",
+              "Surveiller, poursuivre et détenir"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m1q4",
+          "level3": {
+            "text": "The public has the right to file a complaint against a security guard without informing the guard they are doing so.",
+            "options": [
+              "True",
+              "False",
+              "Only for serious complaints",
+              "Only within 30 days"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "Can people complain about a guard without telling the guard?",
+            "options": [
+              "Yes, they can",
+              "No, they cannot",
+              "Only for big problems",
+              "Only in 30 days"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Le public a le droit de déposer une plainte contre un agent de sécurité sans en informer l'agent.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement pour les plaintes graves",
+              "Seulement dans les 30 jours"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m1q5",
+          "level3": {
+            "text": "A security licence may be transferred to another employee at your company.",
+            "options": [
+              "True",
+              "False",
+              "Only with Registrar approval",
+              "Only within the same company"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Can you give your security licence to another worker at your job?",
+            "options": [
+              "Yes, you can",
+              "No, you cannot",
+              "Only if the boss says yes",
+              "Only if they work at the same place"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Un permis de sécurité peut être transféré à un autre employé de votre entreprise.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement avec l'approbation du registraire",
+              "Seulement au sein de la même entreprise"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m1q6",
+          "level3": {
+            "text": "You may identify yourself as a peace officer if you hold a security licence.",
+            "options": [
+              "True",
+              "False",
+              "Only in emergencies",
+              "Only with special authorization"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Can you call yourself a peace officer if you have a security licence?",
+            "options": [
+              "Yes, you can",
+              "No, you cannot",
+              "Only when there is danger",
+              "Only if you have special permission"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Vous pouvez vous identifier comme agent de la paix si vous détenez un permis de sécurité.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement en cas d'urgence",
+              "Seulement avec une autorisation spéciale"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m1q7",
+          "level3": {
+            "text": "What is the minimum age requirement to apply for a security professional licence in Alberta?",
+            "options": [
+              "16 years of age",
+              "17 years of age",
+              "18 years of age",
+              "19 years of age"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "How old must you be to get a security licence in Alberta?",
+            "options": [
+              "16 years old",
+              "17 years old",
+              "18 years old",
+              "19 years old"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Quel est l'âge minimum requis pour demander un permis de professionnel de la sécurité en Alberta?",
+            "options": [
+              "16 ans",
+              "17 ans",
+              "18 ans",
+              "19 ans"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m1q8",
+          "level3": {
+            "text": "A written complaint about a security professional must be directed to whom?",
+            "options": [
+              "The local police department",
+              "The Registrar of Security Programs",
+              "The owner of the business or organization employing the security professional",
+              "The Minister of Public Security"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "Who should get a written complaint about a security guard?",
+            "options": [
+              "The local police",
+              "The Registrar of Security Programs",
+              "The owner of the business where the guard works",
+              "The Minister of Public Security"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Une plainte écrite concernant un professionnel de la sécurité doit être adressée à qui?",
+            "options": [
+              "Le service de police local",
+              "Le registraire des programmes de sécurité",
+              "Le propriétaire de l'entreprise ou de l'organisation employant le professionnel de la sécurité",
+              "Le ministre de la Sécurité publique"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m1q9",
+          "level3": {
+            "text": "Which section of the Security Services and Investigators Act addresses the wearing of uniforms and carrying of weapons by security professionals?",
+            "options": [
+              "Section 16",
+              "Section 20",
+              "Section 34",
+              "Section 18"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "Which part of the law talks about uniforms and weapons for security guards?",
+            "options": [
+              "Section 16",
+              "Section 20",
+              "Section 34",
+              "Section 18"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Quelle section de la Loi sur les services de sécurité et les enquêteurs traite du port d'uniformes et du port d'armes par les professionnels de la sécurité?",
+            "options": [
+              "Section 16",
+              "Section 20",
+              "Section 34",
+              "Section 18"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m1q10",
+          "level3": {
+            "text": "Within how many days must a complaint against a security professional be filed after the alleged incident?",
+            "options": [
+              "30 days",
+              "60 days",
+              "90 days",
+              "120 days"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "How many days do people have to complain about a guard after something happens?",
+            "options": [
+              "30 days",
+              "60 days",
+              "90 days",
+              "120 days"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Dans quel délai une plainte contre un professionnel de la sécurité doit-elle être déposée après l'incident allégué?",
+            "options": [
+              "30 jours",
+              "60 jours",
+              "90 jours",
+              "120 jours"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m1q11",
+          "level3": {
+            "text": "You may work as a security professional if you have completed the training course but not yet received your licence.",
+            "options": [
+              "True",
+              "False",
+              "Only under direct supervision",
+              "Only for a maximum of 30 days"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Can you work as a security guard after finishing the course but before getting your licence?",
+            "options": [
+              "Yes, you can",
+              "No, you cannot",
+              "Only if someone watches you",
+              "Only for 30 days"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Vous pouvez travailler comme professionnel de la sécurité si vous avez terminé le cours de formation mais que vous n'avez pas encore reçu votre permis.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement sous supervision directe",
+              "Seulement pour un maximum de 30 jours"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m1q12",
+          "level3": {
+            "text": "The Registrar may refuse a licence application if the individual has been charged with a criminal offence.",
+            "options": [
+              "True",
+              "False",
+              "Only if convicted",
+              "Only for serious offences"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "Can the Registrar say no to a licence if someone has been charged with a crime?",
+            "options": [
+              "Yes",
+              "No",
+              "Only if they are found guilty",
+              "Only for big crimes"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Le registraire peut refuser une demande de permis si la personne a été accusée d'une infraction criminelle.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement si reconnu coupable",
+              "Seulement pour les infractions graves"
+            ],
+            "answer": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "The Canadian Legal System and Security Professionals",
+      "questions": [
+        {
+          "id": "m2q1",
+          "level3": {
+            "text": "Which section of the Canadian Charter of Rights and Freedoms protects everyone from arbitrary detention or imprisonment?",
+            "options": [
+              "Section 7",
+              "Section 8",
+              "Section 9",
+              "Section 10"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "Which part of the Canadian Charter says no one can be held or locked up without a good reason?",
+            "options": [
+              "Part 7",
+              "Part 8",
+              "Part 9",
+              "Part 10"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Quelle section de la Charte canadienne des droits et libertés protège tout le monde contre la détention ou l'emprisonnement arbitraire?",
+            "options": [
+              "Section 7",
+              "Section 8",
+              "Section 9",
+              "Section 10"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m2q2",
+          "level3": {
+            "text": "Does a licensed security professional have the authority of a peace officer?",
+            "options": [
+              "Yes, when on duty",
+              "Yes, at all times",
+              "No, security professionals have the same rights as any citizen",
+              "No, but they have more authority than citizens"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "Does a security guard have the same power as a police officer?",
+            "options": [
+              "Yes, when they are working",
+              "Yes, all the time",
+              "No, security guards have the same rights as everyone else",
+              "No, but they have more power than other people"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Un professionnel de la sécurité titulaire d'une licence a-t-il l'autorité d'un agent de la paix?",
+            "options": [
+              "Oui, lorsqu'il est en service",
+              "Oui, en tout temps",
+              "Non, les professionnels de la sécurité ont les mêmes droits que tout citoyen",
+              "Non, mais ils ont plus d'autorité que les citoyens"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m2q3",
+          "level3": {
+            "text": "Under Section 494(1)(a) of the Criminal Code, when may a security professional arrest someone without a warrant?",
+            "options": [
+              "When they believe a crime was committed yesterday",
+              "When they find someone committing an indictable offence",
+              "When they suspect someone might commit a crime",
+              "When their supervisor tells them to"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "When can a security guard arrest someone without papers from the police?",
+            "options": [
+              "When they think a crime happened yesterday",
+              "When they catch someone doing a serious crime right now",
+              "When they think someone might do a crime",
+              "When their boss tells them to"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "En vertu de l'article 494(1)(a) du Code criminel, quand un professionnel de la sécurité peut-il arrêter quelqu'un sans mandat?",
+            "options": [
+              "Quand il croit qu'un crime a été commis hier",
+              "Quand il trouve quelqu'un en train de commettre un acte criminel",
+              "Quand il soupçonne que quelqu'un pourrait commettre un crime",
+              "Quand son superviseur le lui dit"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m2q4",
+          "level3": {
+            "text": "After arresting an individual under Section 494, what must a security professional do?",
+            "options": [
+              "Take them to their supervisor",
+              "Turn them over to a peace officer forthwith",
+              "Question them thoroughly",
+              "Release them after getting their information"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "After a security guard arrests someone, what must they do?",
+            "options": [
+              "Take them to their boss",
+              "Give them to a police officer right away",
+              "Ask them lots of questions",
+              "Let them go after writing down their name"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Après avoir arrêté un individu en vertu de l'article 494, que doit faire un professionnel de la sécurité?",
+            "options": [
+              "L'amener à son superviseur",
+              "Le remettre immédiatement à un agent de la paix",
+              "L'interroger en profondeur",
+              "Le libérer après avoir obtenu ses informations"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m2q5",
+          "level3": {
+            "text": "Can a security professional be held criminally responsible for using excessive force?",
+            "options": [
+              "No, they are protected by their employer",
+              "No, only police can be charged",
+              "Yes, according to Section 26 of the Criminal Code",
+              "Yes, but only if someone is seriously injured"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "Can a security guard get in trouble with the law for using too much force?",
+            "options": [
+              "No, their boss will protect them",
+              "No, only police can get in trouble",
+              "Yes, the law says they can be charged",
+              "Yes, but only if someone gets badly hurt"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Un professionnel de la sécurité peut-il être tenu criminellement responsable pour avoir utilisé une force excessive?",
+            "options": [
+              "Non, il est protégé par son employeur",
+              "Non, seuls les policiers peuvent être accusés",
+              "Oui, selon l'article 26 du Code criminel",
+              "Oui, mais seulement si quelqu'un est gravement blessé"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m2q6",
+          "level3": {
+            "text": "Which of the following is an example of an indictable offence?",
+            "options": [
+              "Loitering",
+              "Vagrancy",
+              "Aggravated assault",
+              "Causing a disturbance"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "Which of these is a serious crime?",
+            "options": [
+              "Hanging around with no reason",
+              "Having no home",
+              "Badly hurting someone on purpose",
+              "Making noise and trouble"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Lequel des éléments suivants est un exemple d'acte criminel?",
+            "options": [
+              "Flâner",
+              "Vagabondage",
+              "Voies de fait graves",
+              "Causer un trouble"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m2q7",
+          "level3": {
+            "text": "According to Section 322 of the Criminal Code, when is theft considered complete in a retail setting?",
+            "options": [
+              "When the item is concealed",
+              "When the person passes the checkout without paying and leaves the store",
+              "When the person touches the item",
+              "When the person puts the item in their bag"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "In a store, when is stealing complete?",
+            "options": [
+              "When someone hides something",
+              "When someone goes past the checkout without paying and leaves the store",
+              "When someone touches something",
+              "When someone puts something in their bag"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Selon l'article 322 du Code criminel, quand le vol est-il considéré comme complet dans un commerce de détail?",
+            "options": [
+              "Lorsque l'article est dissimulé",
+              "Lorsque la personne passe la caisse sans payer et quitte le magasin",
+              "Lorsque la personne touche l'article",
+              "Lorsque la personne met l'article dans son sac"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m2q8",
+          "level3": {
+            "text": "Under what circumstances may a security professional search an individual?",
+            "options": [
+              "Whenever they suspect criminal activity",
+              "Only with consent or after a lawful arrest",
+              "Only when their supervisor approves",
+              "Whenever they are on private property"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "When can a security guard search a person?",
+            "options": [
+              "Any time they think the person did something wrong",
+              "Only if the person says yes or after a lawful arrest",
+              "Only when their boss says it is okay",
+              "Any time they are at a private place"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Dans quelles circonstances un professionnel de la sécurité peut-il fouiller un individu?",
+            "options": [
+              "Chaque fois qu'il soupçonne une activité criminelle",
+              "Seulement avec consentement ou après une arrestation légale",
+              "Seulement lorsque son superviseur l'approuve",
+              "Chaque fois qu'il est sur une propriété privée"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m2q9",
+          "level3": {
+            "text": "Which Act protects workers' rights in the province of Alberta?",
+            "options": [
+              "Gaming and Liquor Act",
+              "Trespass to Premises Act",
+              "Employment Standards Code",
+              "Petty Trespass Act"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "Which law protects workers' rights in Alberta?",
+            "options": [
+              "Gaming and Liquor Act",
+              "Trespass to Premises Act",
+              "Employment Standards Code",
+              "Petty Trespass Act"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Quelle loi protège les droits des travailleurs dans la province de l'Alberta?",
+            "options": [
+              "Gaming and Liquor Act",
+              "Trespass to Premises Act",
+              "Employment Standards Code",
+              "Petty Trespass Act"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m2q10",
+          "level3": {
+            "text": "What does Section 494(2) of the Criminal Code permit regarding property-related offences?",
+            "options": [
+              "Only police can arrest for property crimes",
+              "The property owner or authorized agent may arrest someone committing a criminal offence on or in relation to that property",
+              "Security professionals must wait 24 hours before arresting",
+              "Anyone can arrest for property damage"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "What does the law say about arresting someone for crimes on your property?",
+            "options": [
+              "Only police can arrest for property crimes",
+              "The property owner or their helper can arrest someone doing a crime on that property",
+              "Security guards must wait one day before arresting",
+              "Anyone can arrest for property damage"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Que permet l'article 494(2) du Code criminel concernant les infractions liées à la propriété?",
+            "options": [
+              "Seuls les policiers peuvent arrêter pour des crimes contre la propriété",
+              "Le propriétaire ou l'agent autorisé peut arrêter quelqu'un commettant une infraction criminelle sur ou par rapport à cette propriété",
+              "Les professionnels de la sécurité doivent attendre 24 heures avant d'arrêter",
+              "N'importe qui peut arrêter pour dommages à la propriété"
+            ],
+            "answer": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Basic Security Procedures",
+      "questions": [
+        {
+          "id": "m3q1",
+          "level3": {
+            "text": "Observing is the skill of noticing, interpreting, and recalling information. Which of these is NOT a component of effective observation?",
+            "options": [
+              "Noticing details through your senses",
+              "Interpreting the information you gather",
+              "Telling others when they are in danger",
+              "Recalling information accurately"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "When you watch and remember things, you notice, understand, and recall. Which one is NOT part of watching well?",
+            "options": [
+              "Seeing things with your eyes and ears",
+              "Understanding what you see",
+              "Telling people they are not safe",
+              "Remembering what you saw"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "L'observation est la compétence de remarquer, d'interpréter et de se rappeler des informations. Lequel de ces éléments n'est PAS un composant de l'observation efficace?",
+            "options": [
+              "Remarquer les détails par vos sens",
+              "Interpréter les informations que vous recueillez",
+              "Dire aux autres quand ils sont en danger",
+              "Se rappeler les informations avec précision"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m3q2",
+          "level3": {
+            "text": "What does a post order explain?",
+            "options": [
+              "The duties and responsibilities for a particular shift",
+              "The history of the security company",
+              "How to apply for promotion",
+              "Emergency contact numbers only"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "What does a post order tell you?",
+            "options": [
+              "Your job tasks for your work shift",
+              "The story of the security company",
+              "How to get a better job",
+              "Only phone numbers for help"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Qu'est-ce qu'un ordre de poste explique?",
+            "options": [
+              "Les tâches et responsabilités pour un quart de travail particulier",
+              "L'histoire de l'entreprise de sécurité",
+              "Comment postuler pour une promotion",
+              "Uniquement les numéros de contact d'urgence"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m3q3",
+          "level3": {
+            "text": "Which type of patrol allows you to use all of your senses and get closer to persons and property?",
+            "options": [
+              "Vehicle patrol",
+              "Bicycle patrol",
+              "Foot patrol",
+              "Remote surveillance"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "What kind of patrol lets you use your eyes, ears, and nose best and get close to people?",
+            "options": [
+              "Patrol in a car",
+              "Patrol on a bike",
+              "Patrol by walking",
+              "Watching on cameras"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Quel type de patrouille vous permet d'utiliser tous vos sens et de vous rapprocher des personnes et des biens?",
+            "options": [
+              "Patrouille en véhicule",
+              "Patrouille à vélo",
+              "Patrouille à pied",
+              "Surveillance à distance"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m3q4",
+          "level3": {
+            "text": "Can individuals with an ID card automatically access all areas of the premises?",
+            "options": [
+              "Yes, an ID card grants access to all areas",
+              "No, access permissions may vary by individual and area",
+              "Yes, but only during business hours",
+              "No, ID cards are only for identification purposes"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Can people with an ID card go into all areas of the building?",
+            "options": [
+              "Yes, they can go anywhere",
+              "No, they can only go to some places",
+              "Yes, but only when the building is open",
+              "No, ID cards are just to show who they are"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Les personnes avec une carte d'identité peuvent-elles automatiquement accéder à toutes les zones des locaux?",
+            "options": [
+              "Oui, une carte d'identité donne accès à toutes les zones",
+              "Non, les permissions d'accès peuvent varier selon l'individu et la zone",
+              "Oui, mais seulement pendant les heures d'ouverture",
+              "Non, les cartes d'identité sont uniquement à des fins d'identification"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m3q5",
+          "level3": {
+            "text": "When dealing with crowds, which strategy involves identifying and addressing individuals who are encouraging inappropriate behavior?",
+            "options": [
+              "Breaking the crowd into smaller groups",
+              "Removing the leaders",
+              "Seeking help from a sympathetic leader",
+              "Calling for emergency backup immediately"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "When dealing with a big group, what should you do about people who are making others act badly?",
+            "options": [
+              "Split the group into smaller groups",
+              "Take away the leaders",
+              "Ask a nice leader for help",
+              "Call for help right away"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Lorsqu'on traite avec des foules, quelle stratégie consiste à identifier et à s'adresser aux personnes qui encouragent un comportement inapproprié?",
+            "options": [
+              "Diviser la foule en petits groupes",
+              "Retirer les meneurs",
+              "Chercher l'aide d'un meneur sympathique",
+              "Appeler immédiatement des renforts d'urgence"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m3q6",
+          "level3": {
+            "text": "What is the appropriate response when media personnel ask you questions about individuals or incidents at your post?",
+            "options": [
+              "Provide all information you know to help them",
+              "Say 'no comment' to everything",
+              "Refer them to a media contact and refrain from commenting",
+              "Answer only basic questions about public information"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "What should you do when news reporters ask you questions about people or things at your job?",
+            "options": [
+              "Tell them everything you know",
+              "Say 'no comment' to all questions",
+              "Send them to the media person and do not talk about it",
+              "Answer only easy questions about public things"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Quelle est la réponse appropriée lorsque le personnel des médias vous pose des questions sur des personnes ou des incidents à votre poste?",
+            "options": [
+              "Fournir toutes les informations que vous connaissez pour les aider",
+              "Dire 'sans commentaire' à tout",
+              "Les référer à un contact média et s'abstenir de commenter",
+              "Répondre seulement aux questions de base sur l'information publique"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m3q7",
+          "level3": {
+            "text": "According to Section 25(1) of the Criminal Code, when is a security professional justified in using force?",
+            "options": [
+              "Whenever they feel threatened",
+              "When acting on reasonable grounds and using only as much force as necessary",
+              "Only when directed by police",
+              "Any time a person refuses to comply"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "When can a security guard use force on someone?",
+            "options": [
+              "When they feel scared",
+              "When they have a good reason and only use the force they need",
+              "Only when police tell them to",
+              "Any time someone does not listen"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Selon l'article 25(1) du Code criminel, quand un professionnel de la sécurité est-il justifié d'utiliser la force?",
+            "options": [
+              "Chaque fois qu'il se sent menacé",
+              "Lorsqu'il agit pour des motifs raisonnables et n'utilise que la force nécessaire",
+              "Seulement lorsqu'il est dirigé par la police",
+              "Chaque fois qu'une personne refuse de se conformer"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m3q8",
+          "level3": {
+            "text": "What are the three key steps involved in recalling information effectively?",
+            "options": [
+              "Observe, report, record",
+              "Concentrate, associate, repeat",
+              "Notice, interpret, recall",
+              "Watch, listen, document"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "What are three important steps to remember things well?",
+            "options": [
+              "Watch, tell, write",
+              "Focus, connect, say again",
+              "See, understand, remember",
+              "Look, hear, write down"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Quelles sont les trois étapes clés impliquées dans le rappel efficace de l'information?",
+            "options": [
+              "Observer, signaler, enregistrer",
+              "Concentrer, associer, répéter",
+              "Remarquer, interpréter, se rappeler",
+              "Regarder, écouter, documenter"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m3q9",
+          "level3": {
+            "text": "What should you do if you encounter an individual who appears to be experiencing excited delirium?",
+            "options": [
+              "Restrain them immediately face-down",
+              "Call for emergency assistance immediately",
+              "Ignore them and continue your patrol",
+              "Ask them to calm down and leave"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "What should you do if you see someone who is very sick, acting strange, very strong, and sweating a lot?",
+            "options": [
+              "Hold them down on their face right away",
+              "Call 911 for help right away",
+              "Keep walking and ignore them",
+              "Tell them to be calm and go away"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Que devez-vous faire si vous rencontrez une personne qui semble souffrir de délire excité?",
+            "options": [
+              "Les maîtriser immédiatement face contre terre",
+              "Appeler immédiatement l'assistance d'urgence",
+              "Les ignorer et continuer votre patrouille",
+              "Leur demander de se calmer et de partir"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m3q10",
+          "level3": {
+            "text": "Before starting your shift, which of the following is part of being physically prepared?",
+            "options": [
+              "Reviewing social media updates",
+              "Ensuring your uniform is clean, complete, and equipment is in working order",
+              "Planning your evening activities",
+              "Discussing personal issues with coworkers"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Before you start work, what should you do to be ready?",
+            "options": [
+              "Look at your phone and social media",
+              "Make sure your uniform is clean and all your work tools work",
+              "Think about what you will do after work",
+              "Talk to coworkers about your problems"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Avant de commencer votre quart de travail, lequel des éléments suivants fait partie de la préparation physique?",
+            "options": [
+              "Examiner les mises à jour des médias sociaux",
+              "S'assurer que votre uniforme est propre, complet et que l'équipement fonctionne",
+              "Planifier vos activités de soirée",
+              "Discuter de problèmes personnels avec des collègues"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m3q11",
+          "level3": {
+            "text": "When should the offence of theft be considered to have occurred in a retail loss prevention setting?",
+            "options": [
+              "When the subject picks up the merchandise",
+              "When the subject conceals the merchandise",
+              "When the subject passes all cashiers and leaves the store",
+              "When the subject enters the store"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "In a store, when has someone stolen something?",
+            "options": [
+              "When they pick it up",
+              "When they hide it",
+              "When they walk past the cashiers and leave the store",
+              "When they come into the store"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Quand l'infraction de vol doit-elle être considérée comme ayant eu lieu dans un contexte de prévention des pertes dans le commerce de détail?",
+            "options": [
+              "Lorsque le sujet ramasse la marchandise",
+              "Lorsque le sujet dissimule la marchandise",
+              "Lorsque le sujet passe tous les caissiers et quitte le magasin",
+              "Lorsque le sujet entre dans le magasin"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m3q12",
+          "level3": {
+            "text": "What is the primary goal of a security professional when carrying out patrol duties?",
+            "options": [
+              "To make as many arrests as possible",
+              "To observe and protect persons and property",
+              "To enforce all company policies strictly",
+              "To monitor employee productivity"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "What is the main job of a security guard when they walk around at work?",
+            "options": [
+              "To catch as many bad people as they can",
+              "To watch and keep people and things safe",
+              "To make sure all rules are followed",
+              "To watch how much work employees do"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Quel est l'objectif principal d'un professionnel de la sécurité lors de l'exécution des tâches de patrouille?",
+            "options": [
+              "Effectuer autant d'arrestations que possible",
+              "Observer et protéger les personnes et les biens",
+              "Faire respecter strictement toutes les politiques de l'entreprise",
+              "Surveiller la productivité des employés"
+            ],
+            "answer": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Communication for Security Professionals",
+      "questions": [
+        {
+          "id": "m4q1",
+          "level3": {
+            "text": "Security professionals use both verbal and non-verbal communication when performing their duties.",
+            "options": [
+              "True",
+              "False",
+              "Only verbal communication is used",
+              "Only non-verbal communication is used"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "Security guards use words and body language when they work.",
+            "options": [
+              "True",
+              "False",
+              "They only use words",
+              "They only use body language"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Les professionnels de la sécurité utilisent à la fois la communication verbale et non verbale lorsqu'ils exercent leurs fonctions.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seule la communication verbale est utilisée",
+              "Seule la communication non verbale est utilisée"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m4q2",
+          "level3": {
+            "text": "Shouting at individuals is an appropriate way to demonstrate your authority as a security professional.",
+            "options": [
+              "True",
+              "False",
+              "Only in emergencies",
+              "Only outdoors"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Yelling at people is a good way to show you are in charge.",
+            "options": [
+              "True",
+              "False",
+              "Only when there is danger",
+              "Only outside"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Crier après les individus est une façon appropriée de démontrer votre autorité en tant que professionnel de la sécurité.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement en cas d'urgence",
+              "Seulement à l'extérieur"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m4q3",
+          "level3": {
+            "text": "A clean, neatly pressed uniform communicates a professional message to the public.",
+            "options": [
+              "True",
+              "False",
+              "Only the badge matters",
+              "Uniforms do not matter"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "A clean uniform tells people you are a professional.",
+            "options": [
+              "True",
+              "False",
+              "Only your name tag matters",
+              "What you wear does not matter"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Un uniforme propre et bien repassé communique un message professionnel au public.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seul le badge compte",
+              "Les uniformes n'ont pas d'importance"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m4q4",
+          "level3": {
+            "text": "Active listening means paying full attention to the speaker, making eye contact, and not interrupting.",
+            "options": [
+              "True",
+              "False",
+              "It only means standing up",
+              "It means writing everything down"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "Active listening means you look at the person talking and do not interrupt them.",
+            "options": [
+              "True",
+              "False",
+              "It only means you stand up",
+              "It means you write everything"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "L'écoute active signifie accorder toute son attention à l'orateur, établir un contact visuel et ne pas l'interrompre.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Cela signifie seulement se tenir debout",
+              "Cela signifie tout écrire"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m4q5",
+          "level3": {
+            "text": "It is acceptable for a security professional to show anger when a person repeatedly insults them.",
+            "options": [
+              "True",
+              "False",
+              "Only after three insults",
+              "Only in private"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "It is okay for a security guard to get angry when someone insults them over and over.",
+            "options": [
+              "True",
+              "False",
+              "Only after they insult you three times",
+              "Only when no one else is around"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Il est acceptable pour un professionnel de la sécurité de montrer de la colère lorsqu'une personne l'insulte à plusieurs reprises.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement après trois insultes",
+              "Seulement en privé"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m4q6",
+          "level3": {
+            "text": "When conducting an interview, you should tell the individual they are being interviewed and ask if they are comfortable before proceeding.",
+            "options": [
+              "True",
+              "False",
+              "Never tell them it is an interview",
+              "Only tell them after it is finished"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "When you ask someone questions, you should tell them you are interviewing them first.",
+            "options": [
+              "True",
+              "False",
+              "Never tell them",
+              "Only tell them when you are done"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Lors d'une entrevue, vous devez dire à l'individu qu'il est interviewé et lui demander s'il est à l'aise avant de continuer.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Ne jamais leur dire qu'il s'agit d'une entrevue",
+              "Leur dire seulement après la fin"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m4q7",
+          "level3": {
+            "text": "What does the acronym LEAPS stand for in verbal communication?",
+            "options": [
+              "Listen, Empathize, Ask, Paraphrase, Summarize",
+              "Look, Explain, Act, Proceed, Stop",
+              "Learn, Engage, Assist, Protect, Secure",
+              "Listen, Evaluate, Argue, Persuade, Solve"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "What does LEAPS mean when talking to people?",
+            "options": [
+              "Listen, Empathize, Ask, Paraphrase, Summarize",
+              "Look, Explain, Act, Proceed, Stop",
+              "Learn, Engage, Assist, Protect, Secure",
+              "Listen, Evaluate, Argue, Persuade, Solve"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Que signifie l'acronyme LEAPS dans la communication verbale?",
+            "options": [
+              "Listen, Empathize, Ask, Paraphrase, Summarize",
+              "Look, Explain, Act, Proceed, Stop",
+              "Learn, Engage, Assist, Protect, Secure",
+              "Listen, Evaluate, Argue, Persuade, Solve"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m4q8",
+          "level3": {
+            "text": "Studies suggest that what percentage of meaning in communication comes from non-verbal means?",
+            "options": [
+              "50%",
+              "70%",
+              "90%",
+              "100%"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "How much of what we understand comes from body language instead of words?",
+            "options": [
+              "50%",
+              "70%",
+              "90%",
+              "100%"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Les études suggèrent quel pourcentage de la signification dans la communication provient de moyens non verbaux?",
+            "options": [
+              "50%",
+              "70%",
+              "90%",
+              "100%"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m4q9",
+          "level3": {
+            "text": "Having a preference for or against someone based on their gender, ethnicity, religion, or sexual orientation is called what?",
+            "options": [
+              "Empathy",
+              "Bias",
+              "Paraphrasing",
+              "Active listening"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "When you like or dislike someone because of their religion or where they are from, this is called what?",
+            "options": [
+              "Empathy",
+              "Bias",
+              "Paraphrasing",
+              "Active listening"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Avoir une préférence pour ou contre quelqu'un en fonction de son sexe, de son origine ethnique, de sa religion ou de son orientation sexuelle s'appelle comment?",
+            "options": [
+              "Empathie",
+              "Préjugé",
+              "Paraphrase",
+              "Écoute active"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m4q10",
+          "level3": {
+            "text": "Effective professional communication should be confident vs. arrogant, friendly vs. dismissive, and assertive vs. what?",
+            "options": [
+              "Passive",
+              "Aggressive",
+              "Quiet",
+              "Loud"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Good professional talking should be confident, friendly, and assertive instead of what?",
+            "options": [
+              "Passive",
+              "Aggressive",
+              "Quiet",
+              "Loud"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Une communication professionnelle efficace doit être confiante vs. arrogante, amicale vs. dédaigneuse, et assertive vs. quoi?",
+            "options": [
+              "Passive",
+              "Agressive",
+              "Silencieuse",
+              "Forte"
+            ],
+            "answer": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Documentation and Evidence",
+      "questions": [
+        {
+          "id": "m5q1",
+          "level3": {
+            "text": "A security professional does not need to carry a notebook if the employer provides a computer.",
+            "options": [
+              "True",
+              "False",
+              "Only during night shifts",
+              "Only if approved by supervisor"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "A security guard does not need to carry a notebook if they have a computer at work.",
+            "options": [
+              "True",
+              "False",
+              "Only at night",
+              "Only if the boss says yes"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Un professionnel de la sécurité n'a pas besoin de porter un carnet si l'employeur fournit un ordinateur.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement pendant les quarts de nuit",
+              "Seulement si approuvé par le superviseur"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m5q2",
+          "level3": {
+            "text": "It is acceptable to tear out a notebook page to use for another purpose.",
+            "options": [
+              "True",
+              "False",
+              "Only with supervisor approval",
+              "Only if the page is blank"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "It is okay to rip out a page from your notebook to use for something else.",
+            "options": [
+              "True",
+              "False",
+              "Only if your boss says yes",
+              "Only if the page is empty"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Il est acceptable de déchirer une page du carnet pour l'utiliser à d'autres fins.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement avec l'approbation du superviseur",
+              "Seulement si la page est vierge"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m5q3",
+          "level3": {
+            "text": "When writing time in a notebook, which format should be used?",
+            "options": [
+              "12-hour clock",
+              "24-hour clock",
+              "Any format is acceptable",
+              "Time zone abbreviations"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "When you write the time in your notebook, which way should you write it?",
+            "options": [
+              "12-hour clock (like 3:00 PM)",
+              "24-hour clock (like 1500)",
+              "Any way is okay",
+              "With time zone names"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Lors de l'écriture de l'heure dans un carnet, quel format doit être utilisé?",
+            "options": [
+              "Horloge de 12 heures",
+              "Horloge de 24 heures",
+              "N'importe quel format est acceptable",
+              "Abréviations de fuseau horaire"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m5q4",
+          "level3": {
+            "text": "Should you leave space between notebook entries so you can add details later when you remember them?",
+            "options": [
+              "Yes, always leave space",
+              "No, fill every line",
+              "Only if approved by police",
+              "Only for important incidents"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Should you leave empty space between your notebook entries so you can add things later?",
+            "options": [
+              "Yes, always leave space",
+              "No, fill every line",
+              "Only if the police say yes",
+              "Only for big events"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Devriez-vous laisser de l'espace entre les entrées du carnet pour pouvoir ajouter des détails plus tard lorsque vous vous en souvenez?",
+            "options": [
+              "Oui, toujours laisser de l'espace",
+              "Non, remplir chaque ligne",
+              "Seulement si approuvé par la police",
+              "Seulement pour les incidents importants"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m5q5",
+          "level3": {
+            "text": "What is a statement in the context of security documentation?",
+            "options": [
+              "A legal contract",
+              "An individual's explanation of what took place",
+              "A police report only",
+              "A financial document"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "What is a statement in security work?",
+            "options": [
+              "A legal paper",
+              "A person's explanation of what happened",
+              "Only a police report",
+              "A money document"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Qu'est-ce qu'une déclaration dans le contexte de la documentation de sécurité?",
+            "options": [
+              "Un contrat légal",
+              "L'explication d'un individu de ce qui s'est passé",
+              "Un rapport de police seulement",
+              "Un document financier"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m5q6",
+          "level3": {
+            "text": "A security professional will not need to give testimony in court if the notebook is accurate.",
+            "options": [
+              "True",
+              "False",
+              "Only for minor incidents",
+              "Only if the employer agrees"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "A security guard will not need to go to court if their notebook is correct.",
+            "options": [
+              "True",
+              "False",
+              "Only for small problems",
+              "Only if the boss agrees"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Un professionnel de la sécurité n'aura pas besoin de témoigner au tribunal si le carnet est exact.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement pour les incidents mineurs",
+              "Seulement si l'employeur est d'accord"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m5q7",
+          "level3": {
+            "text": "What writing instrument should be used when making entries in a notebook?",
+            "options": [
+              "Pencil",
+              "Pen",
+              "Marker",
+              "Any writing tool"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "What should you use to write in your notebook?",
+            "options": [
+              "Pencil",
+              "Pen",
+              "Marker",
+              "Any writing tool"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Quel instrument d'écriture doit être utilisé lors de la rédaction d'entrées dans un carnet?",
+            "options": [
+              "Crayon",
+              "Stylo",
+              "Marqueur",
+              "N'importe quel outil d'écriture"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m5q8",
+          "level3": {
+            "text": "If you make an error in your notebook entry, what is the correct procedure?",
+            "options": [
+              "Use correction fluid",
+              "Draw a single line through it and initial",
+              "Erase it completely",
+              "Tear out the page"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "If you make a mistake in your notebook, what should you do?",
+            "options": [
+              "Use white-out",
+              "Draw one line through it and write your initials",
+              "Erase it all",
+              "Rip out the page"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Si vous faites une erreur dans votre entrée de carnet, quelle est la procédure correcte?",
+            "options": [
+              "Utiliser du liquide correcteur",
+              "Tracer une seule ligne à travers et parapher",
+              "L'effacer complètement",
+              "Déchirer la page"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m5q9",
+          "level3": {
+            "text": "Within what time frame must an individual licensee report being arrested or charged with a Criminal Code offence to the Registrar?",
+            "options": [
+              "12 hours",
+              "24 hours",
+              "30 days",
+              "7 days"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "How fast must a security guard tell the Registrar if they are arrested or charged with a crime?",
+            "options": [
+              "12 hours",
+              "24 hours",
+              "30 days",
+              "7 days"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Dans quel délai un titulaire de permis individuel doit-il signaler au registraire qu'il a été arrêté ou accusé d'une infraction au Code criminel?",
+            "options": [
+              "12 heures",
+              "24 heures",
+              "30 jours",
+              "7 jours"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m5q10",
+          "level3": {
+            "text": "What should notebook entries be based on?",
+            "options": [
+              "Personal opinions",
+              "Facts and observations only",
+              "Assumptions about suspects",
+              "Rumours and hearsay"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "What should you write in your notebook?",
+            "options": [
+              "What you think happened",
+              "Only facts and what you saw",
+              "Guesses about bad people",
+              "Stories you heard from others"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Sur quoi les entrées du carnet doivent-elles être basées?",
+            "options": [
+              "Opinions personnelles",
+              "Faits et observations seulement",
+              "Hypothèses sur les suspects",
+              "Rumeurs et ouï-dire"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m5q11",
+          "level3": {
+            "text": "What is the primary role of a security professional when evidence is discovered at a crime scene?",
+            "options": [
+              "Collect and package all evidence",
+              "Preserve the scene until police arrive",
+              "Interview all witnesses immediately",
+              "Clean up the scene"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "What is the main job of a security guard when they find evidence at a crime scene?",
+            "options": [
+              "Collect and bag all evidence",
+              "Keep the scene safe until police come",
+              "Talk to all witnesses right away",
+              "Clean up the area"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Quel est le rôle principal d'un professionnel de la sécurité lorsque des preuves sont découvertes sur une scène de crime?",
+            "options": [
+              "Collecter et emballer toutes les preuves",
+              "Préserver la scène jusqu'à l'arrivée de la police",
+              "Interroger tous les témoins immédiatement",
+              "Nettoyer la scène"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m5q12",
+          "level3": {
+            "text": "What document is used to formally summon a witness to testify in court?",
+            "options": [
+              "Warrant",
+              "Subpoena",
+              "Affidavit",
+              "Summons"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "What document is used to tell a witness they must come to court?",
+            "options": [
+              "Warrant",
+              "Subpoena",
+              "Affidavit",
+              "Summons"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Quel document est utilisé pour convoquer formellement un témoin à témoigner au tribunal?",
+            "options": [
+              "Mandat",
+              "Assignation à comparaître",
+              "Affidavit",
+              "Citation"
+            ],
+            "answer": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Response Procedures for Security Professionals",
+      "questions": [
+        {
+          "id": "m6q1",
+          "level3": {
+            "text": "A security professional must monitor only burglar alarms and ignore other types of alarm systems.",
+            "options": [
+              "True",
+              "False",
+              "Only during night shifts",
+              "Only in commercial buildings"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "A security guard only needs to watch alarms for burglars and can skip other alarms.",
+            "options": [
+              "True",
+              "False",
+              "Only at night",
+              "Only in stores"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Un professionnel de la sécurité doit surveiller uniquement les alarmes anti-effraction et ignorer les autres types de systèmes d'alarme.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement pendant les quarts de nuit",
+              "Seulement dans les bâtiments commerciaux"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m6q2",
+          "level3": {
+            "text": "Upon hearing a fire alarm, the first action a security professional should take is to evacuate the building immediately.",
+            "options": [
+              "True",
+              "False",
+              "Only if smoke is visible",
+              "Only after calling supervisors"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "When you hear a fire alarm, you should leave the building right away first.",
+            "options": [
+              "True",
+              "False",
+              "Only if you see smoke",
+              "Only after calling your boss"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "En entendant une alarme incendie, la première action qu'un professionnel de la sécurité devrait prendre est d'évacuer immédiatement le bâtiment.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement si la fumée est visible",
+              "Seulement après avoir appelé les superviseurs"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m6q3",
+          "level3": {
+            "text": "False alarms do not need to be documented in a security professional's notebook.",
+            "options": [
+              "True",
+              "False",
+              "Only major alarms need documentation",
+              "Only if requested by supervisors"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "You do not need to write down false alarms in your notebook.",
+            "options": [
+              "True",
+              "False",
+              "Only write down big alarms",
+              "Only if your boss asks"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Les fausses alarmes n'ont pas besoin d'être documentées dans le carnet d'un professionnel de la sécurité.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seules les alarmes majeures nécessitent une documentation",
+              "Seulement si demandé par les superviseurs"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m6q4",
+          "level3": {
+            "text": "Water can be safely used to extinguish all types of fires.",
+            "options": [
+              "True",
+              "False",
+              "Only small fires",
+              "Only outdoor fires"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "You can use water to put out all kinds of fires.",
+            "options": [
+              "True",
+              "False",
+              "Only small fires",
+              "Only fires outside"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "L'eau peut être utilisée en toute sécurité pour éteindre tous les types d'incendies.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement les petits incendies",
+              "Seulement les incendies extérieurs"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m6q5",
+          "level3": {
+            "text": "A security professional should begin searching the premises immediately upon receiving a bomb threat.",
+            "options": [
+              "True",
+              "False",
+              "Only if authorized",
+              "Only in public areas"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "You should start looking for a bomb right away after getting a bomb threat call.",
+            "options": [
+              "True",
+              "False",
+              "Only if someone tells you to",
+              "Only in public places"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Un professionnel de la sécurité devrait commencer à fouiller les lieux immédiatement après avoir reçu une menace à la bombe.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement si autorisé",
+              "Seulement dans les zones publiques"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m6q6",
+          "level3": {
+            "text": "During a building evacuation, security professionals should instruct people to run to speed up the evacuation process.",
+            "options": [
+              "True",
+              "False",
+              "Only in fire emergencies",
+              "Only if the building is crowded"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "When people leave a building in an emergency, tell them to run fast.",
+            "options": [
+              "True",
+              "False",
+              "Only in a fire",
+              "Only if many people are there"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Pendant l'évacuation d'un bâtiment, les professionnels de la sécurité devraient demander aux gens de courir pour accélérer le processus d'évacuation.",
+            "options": [
+              "Vrai",
+              "Faux",
+              "Seulement en cas d'incendie",
+              "Seulement si le bâtiment est bondé"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m6q7",
+          "level3": {
+            "text": "What are the three primary components of an alarm system?",
+            "options": [
+              "Sensor, transmitter, control panel",
+              "Camera, monitor, recorder",
+              "Lock, key, handle",
+              "Wire, battery, switch"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "What are the three main parts of an alarm?",
+            "options": [
+              "Sensor, transmitter, control panel",
+              "Camera, screen, recorder",
+              "Lock, key, handle",
+              "Wire, battery, switch"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Quels sont les trois composants principaux d'un système d'alarme?",
+            "options": [
+              "Capteur, émetteur, panneau de contrôle",
+              "Caméra, moniteur, enregistreur",
+              "Serrure, clé, poignée",
+              "Fil, batterie, interrupteur"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m6q8",
+          "level3": {
+            "text": "What does the acronym PASS stand for when using a fire extinguisher?",
+            "options": [
+              "Pull, Aim, Squeeze, Sweep",
+              "Push, Activate, Spray, Stop",
+              "Prepare, Assess, Spray, Secure",
+              "Point, Activate, Spray, Save"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "What does PASS mean when you use a fire extinguisher?",
+            "options": [
+              "Pull, Aim, Squeeze, Sweep",
+              "Push, Turn on, Spray, Stop",
+              "Get ready, Look, Spray, Be safe",
+              "Point, Turn on, Spray, Save"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Que signifie l'acronyme PASS lors de l'utilisation d'un extincteur?",
+            "options": [
+              "Pull, Aim, Squeeze, Sweep (Tirer, Viser, Presser, Balayer)",
+              "Push, Activate, Spray, Stop",
+              "Prepare, Assess, Spray, Secure",
+              "Point, Activate, Spray, Save"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m6q9",
+          "level3": {
+            "text": "Which type of fire extinguisher rating is appropriate for ordinary combustibles such as paper, wood, and fabric?",
+            "options": [
+              "Class A",
+              "Class B",
+              "Class C",
+              "Class D"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "Which fire extinguisher should you use for paper, wood, and cloth fires?",
+            "options": [
+              "Class A",
+              "Class B",
+              "Class C",
+              "Class D"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Quel type de classification d'extincteur est approprié pour les combustibles ordinaires tels que le papier, le bois et le tissu?",
+            "options": [
+              "Classe A",
+              "Classe B",
+              "Classe C",
+              "Classe D"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m6q10",
+          "level3": {
+            "text": "When you discover a suspicious object during a bomb threat search, what is the minimum safe distance you should move away before using electronic devices?",
+            "options": [
+              "50 metres",
+              "10 metres",
+              "25 metres",
+              "100 metres"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "If you find something that might be a bomb, how far away should you go before using your phone or radio?",
+            "options": [
+              "50 metres",
+              "10 metres",
+              "25 metres",
+              "100 metres"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Lorsque vous découvrez un objet suspect lors d'une recherche de menace à la bombe, quelle est la distance de sécurité minimale à laquelle vous devez vous éloigner avant d'utiliser des appareils électroniques?",
+            "options": [
+              "50 mètres",
+              "10 mètres",
+              "25 mètres",
+              "100 mètres"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m6q11",
+          "level3": {
+            "text": "What information source should inform a security professional about expected alarm response protocols at their work site?",
+            "options": [
+              "Post orders",
+              "Personal judgment",
+              "News reports",
+              "Building blueprints"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "Where should a security guard look to learn what to do when an alarm goes off at work?",
+            "options": [
+              "Post orders",
+              "Their own ideas",
+              "News on TV",
+              "Building maps"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Quelle source d'information devrait informer un professionnel de la sécurité des protocoles de réponse aux alarmes attendus sur leur lieu de travail?",
+            "options": [
+              "Ordres de poste",
+              "Jugement personnel",
+              "Reportages médiatiques",
+              "Plans du bâtiment"
+            ],
+            "answer": 0
+          }
+        },
+        {
+          "id": "m6q12",
+          "level3": {
+            "text": "When should a security professional identify individuals with special mobility or other needs that may require assistance during an emergency?",
+            "options": [
+              "Before an emergency situation occurs",
+              "During the emergency evacuation",
+              "After emergency services arrive",
+              "Only if requested by management"
+            ],
+            "answer": 0
+          },
+          "level2": {
+            "text": "When should a security guard find out who needs help to leave the building in an emergency?",
+            "options": [
+              "Before an emergency happens",
+              "During the emergency",
+              "After help arrives",
+              "Only if the boss asks"
+            ],
+            "answer": 0
+          },
+          "level1": {
+            "text": "Quand un professionnel de la sécurité devrait-il identifier les personnes ayant des besoins spéciaux de mobilité ou autres qui pourraient nécessiter de l'aide lors d'une urgence?",
+            "options": [
+              "Avant qu'une situation d'urgence ne se produise",
+              "Pendant l'évacuation d'urgence",
+              "Après l'arrivée des services d'urgence",
+              "Seulement si demandé par la direction"
+            ],
+            "answer": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Health and Safety for Security Professionals",
+      "questions": [
+        {
+          "id": "m7q1",
+          "level3": {
+            "text": "Working night shift is an example of which level of risk duty?",
+            "options": [
+              "Low risk",
+              "Medium risk",
+              "High risk",
+              "No risk"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "Working at night is what kind of risk?",
+            "options": [
+              "Low risk",
+              "Medium risk",
+              "High risk",
+              "No risk"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Travailler de nuit est un exemple de quel niveau de risque?",
+            "options": [
+              "Risque faible",
+              "Risque moyen",
+              "Risque élevé",
+              "Aucun risque"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m7q2",
+          "level3": {
+            "text": "Should you exercise right before bedtime in order to get a good sleep?",
+            "options": [
+              "Yes, it helps you relax",
+              "No, it raises your energy and body temperature",
+              "Yes, but only light exercise",
+              "No, unless you are very tired"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Should you work out right before you go to bed?",
+            "options": [
+              "Yes, it helps you relax",
+              "No, it gives you more energy and makes you warmer",
+              "Yes, but only easy exercise",
+              "No, unless you are very tired"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Devriez-vous faire de l'exercice juste avant de vous coucher pour bien dormir?",
+            "options": [
+              "Oui, cela vous aide à vous détendre",
+              "Non, cela augmente votre énergie et votre température corporelle",
+              "Oui, mais seulement un exercice léger",
+              "Non, sauf si vous êtes très fatigué"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m7q3",
+          "level3": {
+            "text": "What should shift workers do regarding social events and personal time?",
+            "options": [
+              "Avoid all social events while working shifts",
+              "Cancel all family activities",
+              "Carefully plan family activities and schedule events in advance",
+              "Only socialize with day workers"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "What should shift workers do about fun time with family and friends?",
+            "options": [
+              "Stop all fun events when working shifts",
+              "Cancel all family time",
+              "Plan family time carefully and pick days ahead of time",
+              "Only see people who work days"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Que devraient faire les travailleurs postés concernant les événements sociaux et le temps personnel?",
+            "options": [
+              "Éviter tous les événements sociaux pendant le travail posté",
+              "Annuler toutes les activités familiales",
+              "Planifier soigneusement les activités familiales et programmer les événements à l'avance",
+              "Socialiser uniquement avec les travailleurs de jour"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m7q4",
+          "level3": {
+            "text": "How does avoiding alcohol help a shift worker cope with unusual work hours?",
+            "options": [
+              "It does not help at all",
+              "It helps maintain better health and sleep patterns",
+              "It only helps on night shifts",
+              "It makes working harder"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "How does not drinking alcohol help a shift worker?",
+            "options": [
+              "It does not help",
+              "It helps you stay healthy and sleep better",
+              "It only helps at night",
+              "It makes work harder"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Comment éviter l'alcool aide-t-il un travailleur posté à faire face aux horaires de travail inhabituels?",
+            "options": [
+              "Cela n'aide pas du tout",
+              "Cela aide à maintenir une meilleure santé et de meilleurs habitudes de sommeil",
+              "Cela n'aide que pour les quarts de nuit",
+              "Cela rend le travail plus difficile"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m7q5",
+          "level3": {
+            "text": "Who is responsible for providing you with a site risk assessment?",
+            "options": [
+              "The security guard themselves",
+              "Your employer",
+              "The client",
+              "The police"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Who should give you information about dangers at your work place?",
+            "options": [
+              "You find it yourself",
+              "Your boss",
+              "The customer",
+              "The police"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Qui est responsable de vous fournir une évaluation des risques du site?",
+            "options": [
+              "Le gardien de sécurité lui-même",
+              "Votre employeur",
+              "Le client",
+              "La police"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m7q6",
+          "level3": {
+            "text": "Are isolated work sites considered a hazard?",
+            "options": [
+              "No, they are always safe",
+              "Yes, they are considered a hazard",
+              "Only during daytime",
+              "Only if there is no phone signal"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Are work places that are alone and far away dangerous?",
+            "options": [
+              "No, they are always safe",
+              "Yes, they can be dangerous",
+              "Only during the day",
+              "Only if you have no phone"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Les sites de travail isolés sont-ils considérés comme un danger?",
+            "options": [
+              "Non, ils sont toujours sûrs",
+              "Oui, ils sont considérés comme un danger",
+              "Seulement pendant la journée",
+              "Seulement s'il n'y a pas de signal téléphonique"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m7q7",
+          "level3": {
+            "text": "Working at a parking lot during daytime hours is an example of what level of risk situation?",
+            "options": [
+              "Low risk",
+              "Medium risk",
+              "High risk",
+              "Critical risk"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Working at a parking lot during the day is what kind of risk?",
+            "options": [
+              "Low risk",
+              "Medium risk",
+              "High risk",
+              "Very bad risk"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Travailler dans un stationnement pendant les heures de jour est un exemple de quel niveau de risque?",
+            "options": [
+              "Risque faible",
+              "Risque moyen",
+              "Risque élevé",
+              "Risque critique"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m7q8",
+          "level3": {
+            "text": "Working at height without a safety rope is an example of what type of hazard?",
+            "options": [
+              "Substance hazard",
+              "Energy source hazard",
+              "Practice hazard",
+              "Material hazard"
+            ],
+            "answer": 2
+          },
+          "level2": {
+            "text": "Working high up without a safety rope is what kind of danger?",
+            "options": [
+              "Chemical danger",
+              "Power danger",
+              "Bad way of doing work danger",
+              "Material danger"
+            ],
+            "answer": 2
+          },
+          "level1": {
+            "text": "Travailler en hauteur sans corde de sécurité est un exemple de quel type de danger?",
+            "options": [
+              "Danger de substance",
+              "Danger de source d'énergie",
+              "Danger de pratique",
+              "Danger de matériau"
+            ],
+            "answer": 2
+          }
+        },
+        {
+          "id": "m7q9",
+          "level3": {
+            "text": "Are crowds considered a form of hazard for security professionals?",
+            "options": [
+              "No, crowds are never hazardous",
+              "Yes, crowds are considered a hazard",
+              "Only crowds with alcohol",
+              "Only crowds at night"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "Are big groups of people a danger for security guards?",
+            "options": [
+              "No, groups of people are never dangerous",
+              "Yes, groups of people can be dangerous",
+              "Only if people are drinking",
+              "Only at night"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Les foules sont-elles considérées comme une forme de danger pour les professionnels de la sécurité?",
+            "options": [
+              "Non, les foules ne sont jamais dangereuses",
+              "Oui, les foules sont considérées comme un danger",
+              "Seulement les foules avec de l'alcool",
+              "Seulement les foules la nuit"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m7q10",
+          "level3": {
+            "text": "When should afternoon shift workers have their main meal?",
+            "options": [
+              "At midnight",
+              "In the middle of the day instead of the middle of their shift",
+              "At the end of their shift",
+              "They should skip their main meal"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "When should afternoon workers eat their big meal?",
+            "options": [
+              "At midnight",
+              "In the middle of the day, not in the middle of work",
+              "At the end of work",
+              "They should not eat a big meal"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Quand les travailleurs de l'après-midi devraient-ils prendre leur repas principal?",
+            "options": [
+              "À minuit",
+              "Au milieu de la journée plutôt qu'au milieu de leur quart",
+              "À la fin de leur quart",
+              "Ils devraient sauter leur repas principal"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m7q11",
+          "level3": {
+            "text": "What is one way to minimize risk by wearing items issued by your employer?",
+            "options": [
+              "Wearing casual clothes",
+              "Wearing safety or protective equipment as required",
+              "Wearing your own choice of footwear",
+              "Refusing to wear uniforms"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "What should you wear that your boss gives you to stay safe?",
+            "options": [
+              "Your own clothes",
+              "Safety items like boots and vests",
+              "Your own shoes",
+              "No uniform"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Quelle est une façon de minimiser le risque en portant des articles fournis par votre employeur?",
+            "options": [
+              "Porter des vêtements décontractés",
+              "Porter l'équipement de sécurité ou de protection requis",
+              "Porter vos propres chaussures",
+              "Refuser de porter des uniformes"
+            ],
+            "answer": 1
+          }
+        },
+        {
+          "id": "m7q12",
+          "level3": {
+            "text": "What should you do to maintain communication and ensure your safety while on duty?",
+            "options": [
+              "Never contact your supervisor",
+              "Check in regularly with co-workers or supervisor at the beginning, during, and end of shift",
+              "Only communicate in emergencies",
+              "Avoid all contact with others"
+            ],
+            "answer": 1
+          },
+          "level2": {
+            "text": "What should you do to talk to others and stay safe at work?",
+            "options": [
+              "Never call your boss",
+              "Check in with your boss or other workers at the start, during, and end of work",
+              "Only talk in emergencies",
+              "Do not talk to anyone"
+            ],
+            "answer": 1
+          },
+          "level1": {
+            "text": "Que devriez-vous faire pour maintenir la communication et assurer votre sécurité pendant le service?",
+            "options": [
+              "Ne jamais contacter votre superviseur",
+              "Communiquer régulièrement avec vos collègues ou superviseur au début, pendant et à la fin du quart",
+              "Communiquer uniquement en cas d'urgence",
+              "Éviter tout contact avec les autres"
+            ],
+            "answer": 1
+          }
+        }
+      ]
+    }
+  ]
+}
