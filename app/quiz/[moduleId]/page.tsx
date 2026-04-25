@@ -6,7 +6,7 @@ import { QuestionsData, Question, QuestionLevel, QuestionProgress } from "@/lib/
 import { getQuestionProgress, updateQuestionProgress } from "@/lib/progress";
 import questionsData from "@/public/questions.json";
 
-type Phase = "answering" | "correct" | "wrong" | "confidence";
+type Phase = "answering" | "correct" | "wrong" | "confidence" | "explain" | "evaluating" | "results";
 
 function getLevel(question: Question, level: 1 | 2 | 3): QuestionLevel {
   if (level === 1) return question.level1;
@@ -25,6 +25,12 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [progressMap, setProgressMap] = useState<Record<string, QuestionProgress>>({});
   const [attempt, setAttempt] = useState(0);
+  const [explanation, setExplanation] = useState("");
+  const [evaluationResult, setEvaluationResult] = useState<{
+    english: { score: number; feedback: string };
+    concepts: { score: number; feedback: string };
+  } | null>(null);
+  const [evalError, setEvalError] = useState("");
 
   useEffect(() => {
     if (!mod) return;
@@ -72,10 +78,7 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
     setSelectedAnswer(optionIndex);
     if (optionIndex === currentLevel.answer) {
       if (qProgress.level === 3) {
-        const updated: QuestionProgress = { level: 3, completed: true };
-        updateQuestionProgress(mod!.id, question.id, updated);
-        setProgressMap((prev) => ({ ...prev, [question.id]: updated }));
-        setPhase("correct");
+        setPhase("explain");
       } else {
         setPhase("confidence");
       }
@@ -98,9 +101,42 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
     advanceToNext();
   }
 
+  async function handleExplanationSubmit() {
+    if (!explanation.trim()) return;
+    setPhase("evaluating");
+    setEvalError("");
+    try {
+      const res = await fetch("/api/evaluate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          questionText: currentLevel.text,
+          correctAnswer: currentLevel.options[currentLevel.answer],
+          userExplanation: explanation,
+        }),
+      });
+      if (!res.ok) throw new Error("Evaluation failed");
+      const data = await res.json();
+      setEvaluationResult(data);
+      const passed = data.english.score >= 3 && data.concepts.score >= 3;
+      if (passed) {
+        const updated: QuestionProgress = { level: 3, completed: true };
+        updateQuestionProgress(mod!.id, question.id, updated);
+        setProgressMap((prev) => ({ ...prev, [question.id]: updated }));
+      }
+      setPhase("results");
+    } catch {
+      setEvalError("Something went wrong. Please try again.");
+      setPhase("explain");
+    }
+  }
+
   function advanceToNext() {
     setPhase("answering");
     setSelectedAnswer(null);
+    setExplanation("");
+    setEvaluationResult(null);
+    setEvalError("");
     const next = findNextIncomplete(currentIndex + 1);
     if (next === null) {
       router.push(`/complete/${mod!.id}`);
@@ -238,6 +274,89 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
                     😊
                   </button>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* Explain phase — Level 3 explain your answer */}
+          {phase === "explain" && (
+            <div className="mt-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                <p className="text-blue-800 font-medium">Explain your answer</p>
+                <p className="text-blue-600 text-sm mt-1">
+                  Why is &ldquo;{currentLevel.options[currentLevel.answer]}&rdquo; the correct answer? Use proper terminology.
+                </p>
+              </div>
+              <textarea
+                value={explanation}
+                onChange={(e) => setExplanation(e.target.value)}
+                placeholder="Type your explanation here..."
+                className="w-full border-2 border-gray-200 rounded-lg p-3 text-gray-800 min-h-[120px] focus:border-blue-400 focus:outline-none resize-y"
+              />
+              {evalError && (
+                <p className="text-red-600 text-sm mt-2">{evalError}</p>
+              )}
+              <button
+                onClick={handleExplanationSubmit}
+                disabled={!explanation.trim()}
+                className="mt-3 w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Submit Explanation
+              </button>
+            </div>
+          )}
+
+          {/* Evaluating phase — spinner */}
+          {phase === "evaluating" && (
+            <div className="mt-6 text-center">
+              <div className="inline-block w-10 h-10 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mb-3" />
+              <p className="text-gray-600 font-medium">Evaluating your explanation...</p>
+            </div>
+          )}
+
+          {/* Results phase — show scores and feedback */}
+          {phase === "results" && evaluationResult && (
+            <div className="mt-4">
+              {evaluationResult.english.score >= 3 && evaluationResult.concepts.score >= 3 ? (
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4 text-center">
+                  <p className="text-2xl mb-1">⭐</p>
+                  <p className="text-green-800 font-medium">Passed!</p>
+                </div>
+              ) : (
+                <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4 text-center">
+                  <p className="text-orange-800 font-medium">Not quite — this card will come back around.</p>
+                </div>
+              )}
+
+              <div className="space-y-3">
+                <div className="bg-white border border-gray-200 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-1">
+                    <p className="font-medium text-gray-900">English Proficiency</p>
+                    <span className={`font-bold text-lg ${evaluationResult.english.score >= 3 ? "text-green-600" : "text-red-600"}`}>
+                      {evaluationResult.english.score}/5
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-sm">{evaluationResult.english.feedback}</p>
+                </div>
+
+                <div className="bg-white border border-gray-200 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-1">
+                    <p className="font-medium text-gray-900">Conceptual Understanding</p>
+                    <span className={`font-bold text-lg ${evaluationResult.concepts.score >= 3 ? "text-green-600" : "text-red-600"}`}>
+                      {evaluationResult.concepts.score}/5
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-sm">{evaluationResult.concepts.feedback}</p>
+                </div>
+              </div>
+
+              <div className="text-center mt-4">
+                <button
+                  onClick={advanceToNext}
+                  className="bg-blue-600 text-white w-14 h-14 rounded-full text-2xl flex items-center justify-center mx-auto hover:bg-blue-700 transition-colors active:scale-95"
+                >
+                  →
+                </button>
               </div>
             </div>
           )}
