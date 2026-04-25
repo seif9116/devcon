@@ -1,0 +1,112 @@
+[
+  {
+    "slug": "charter-rights-security-professionals",
+    "title": "Charter of Rights and Security Professionals",
+    "body": "## Charter of Rights and Security Professionals\n\nThe **Canadian Charter of Rights and Freedoms** establishes fundamental rights for all Canadians, including those you interact with as a security professional. Sections 7 through 14 are particularly relevant to your duties.\n\n### Key Charter Sections\n\n**Section 7** guarantees everyone the right to life, liberty and security of the person. You cannot deprive individuals of these rights except in accordance with principles of fundamental justice.\n\n**Section 8** protects individuals from unreasonable search or seizure. As a security professional, you must understand what constitutes reasonable search authority.\n\n**Section 9** ensures everyone has the right not to be arbitrarily detained or imprisoned. Any detention or arrest you perform must have lawful justification.\n\n**Section 10** outlines arrest and detention rights, including being informed of reasons for arrest, the right to counsel, and having detention validity determined.\n\n### Your Responsibilities\n\nYou should **never confuse your position as a security professional with the powers granted to a police officer**. You have the same rights to take action as other citizens—no more, no less.\n\nFamiliarizing yourself with permissible behaviour limits your vulnerability to legal action and civil suits. Understanding these Charter protections helps you perform your duties lawfully while respecting individual rights.\n\n### Primary Duty\n\nRemember: your primary duty is to **safeguard people and property**. For the most part, you should plan to be **observing and reporting criminal activity**, leaving law enforcement to the police.",
+    "relatedSlugs": [
+      "citizen-power-of-arrest",
+      "search-seizure-security-work",
+      "exceeding-authority-consequences"
+    ],
+    "moduleId": 2
+  },
+  {
+    "slug": "citizen-power-of-arrest",
+    "title": "Citizen's Power of Arrest Under Section 494",
+    "body": "## Citizen's Power of Arrest Under Section 494\n\nSecurity professionals must understand **Section 494 of the Criminal Code**, which defines when any person may arrest another without a warrant.\n\n### Section 494(1)(a): Found Committing\n\nYou may arrest a person you **find committing an indictable offence**. This means you must catch them in the act—witnessing only the start or end result is insufficient. Examples include assault, theft over $5,000, or break and enter.\n\n### Section 494(1)(b): Assisting in Pursuit\n\nYou may arrest someone who has committed a criminal offence and is **escaping from and freshly pursued** by persons with lawful arrest authority. You must have **reasonable grounds** to believe an offence occurred.\n\n### Section 494(2): Property Owner or Agent\n\nAs a security professional acting on behalf of the property owner, you may arrest any person found committing **any criminal offence on or in relation to that property**. This section has a lower threshold than 494(1)(a).\n\nThe 2012 amendment permits arrest **within a reasonable amount of time** after an offence, if it's not feasible for a peace officer to make the arrest. However, \"reasonable amount of time\" remains undefined until tested in court.\n\n### Critical Requirements\n\n- You must **personally witness** the offence\n- You must deliver arrested persons to police **forthwith** (Section 494(3))\n- **Best practice**: Wherever possible, call police and be a good witness rather than making arrests yourself\n- Always check your **employer's policy** on arrests—some prohibit staff from making them",
+    "relatedSlugs": [
+      "how-to-make-lawful-arrest",
+      "criminal-code-offence-types",
+      "charter-rights-security-professionals"
+    ],
+    "moduleId": 2
+  },
+  {
+    "slug": "how-to-make-lawful-arrest",
+    "title": "How to Make a Lawful Arrest",
+    "body": "## How to Make a Lawful Arrest\n\nWhen circumstances require you to arrest someone under **Section 494**, follow proper procedures to ensure the arrest is lawful and respectful of individual rights.\n\n### Arrest Procedure Steps\n\n**1. Identify Yourself**\n\"My name is John. I am the loss prevention worker for Mega Mart.\"\n\n**2. State the Reason**\n\"I am arresting you for theft of a video game.\" Be specific about the offence.\n\n**3. Check for Understanding**\n\"Do you understand what I have just told you?\" Ensure the person comprehends the situation.\n\n**4. Remove to Private Area**\n\"Please come with me.\" If possible, move away from public view to protect dignity.\n\n**5. Advise of Rights (Optional)**\nWhile there is **no legal requirement** for security professionals to read rights or provide lawyer access, check with your supervisor for guidance. You may inform them: \"You are not obligated to say anything. If you say something, it may be recorded and used as evidence.\"\n\n**6. Allow Phone Call**\nIf you choose to advise of rights, allow them to make their phone call.\n\n**7. Call Police Immediately**\nAwait police arrival. You must turn the arrested person over to a peace officer forthwith.\n\n### Documentation\n\nRecord all events and information about the individual in your notebook as soon as time permits. Your notes may be critical evidence.\n\n### Remember\n\nThe arrested person **still has rights**. Our justice system presumes innocence until conviction. Treat arrested individuals with respect throughout the process.",
+    "relatedSlugs": [
+      "citizen-power-of-arrest",
+      "use-of-force-principles",
+      "search-seizure-security-work"
+    ],
+    "moduleId": 2
+  },
+  {
+    "slug": "criminal-code-offence-types",
+    "title": "Types of Criminal Code Offences",
+    "body": "## Types of Criminal Code Offences\n\nThe **Criminal Code of Canada** classifies offences into three categories. Understanding these classifications is essential for applying your arrest powers correctly.\n\n### Summary Conviction Offences\n\nConsidered **\"less serious offences\"** punishable by jail time, fine, or both. Examples include:\n- Unlawful assembly\n- Causing a disturbance\n- Loitering\n- Trespassing at night\n- Vagrancy\n\n**Important**: You **cannot** arrest for summary conviction offences under Section 494(1)(a).\n\n### Indictable Offences\n\n**Serious offences** with more severe punishments. Examples include:\n- Aggravated assault\n- Theft over $5,000\n- Robbery with firearm\n- Break and enter (dwelling house)\n- Possession of property over $5,000\n- Fraud over $5,000\n- Arson\n\nYou **may arrest** for indictable offences under Section 494(1)(a) if you find someone committing them.\n\n### Hybrid (Dual) Offences\n\nOffences that include **both summary conviction and indictable** components. The Crown chooses which to prosecute. Examples include:\n- Possession of prohibited weapon\n- Criminal harassment\n- Common assault\n- Assault causing bodily harm\n- Sexual assault\n- Theft $5,000 or less\n- Possession of property under $5,000\n- Mischief\n\n### Most Common Offences for Security Professionals\n\nYou'll most frequently encounter:\n1. Defence of property\n2. Assault\n3. Theft\n4. Break and enter\n5. Possession of stolen property\n6. Mischief\n\nUnderstand the differences between offence types to apply **Section 494** correctly in the field.",
+    "relatedSlugs": [
+      "citizen-power-of-arrest",
+      "theft-break-enter-offences",
+      "assault-mischief-definitions"
+    ],
+    "moduleId": 2
+  },
+  {
+    "slug": "theft-break-enter-offences",
+    "title": "Theft and Break and Enter Offences",
+    "body": "## Theft and Break and Enter Offences\n\nAs a security professional protecting property, you'll frequently encounter **theft** and **break and enter** offences.\n\n### Theft (Section 322)\n\nTheft occurs when someone **fraudulently and without colour of right** takes or converts anything with intent to:\n- Deprive the owner temporarily or absolutely\n- Pledge or deposit it as security\n- Part with it under conditions preventing return\n- Deal with it so it cannot be restored to original condition\n\n**Theft is complete** when someone with intent to steal moves an item or causes it to be moved or become movable.\n\n### Retail Theft Best Practices\n\nFor **shoplifting**, theft should not be considered complete until the subject has:\n- Passed any checkout or till area\n- **Left the store**\n\nThis prevents suspects from claiming they intended to pay after finding more items. Arresting before exit may render your arrest **unlawful**.\n\n### Section 494(2) Application\n\nIf an individual known to have committed theft returns to the store, you may arrest within a **reasonable amount of time** following the original incident, if a peace officer is unavailable. Proper documentation of previous crimes is required. **Highly recommended**: Report crimes to police immediately to support \"reasonable time\" definitions.\n\n### Break and Enter (Section 348)\n\nOccurs when someone breaks and enters a place with intent to commit an **indictable offence**. \n\n**Breaking** means:\n- Physically damaging premises to enter (smashing windows)\n- Opening something covering external/internal openings (picking locks)\n\nPunishment is more severe for dwelling houses (life imprisonment) versus other places (up to ten years).",
+    "relatedSlugs": [
+      "criminal-code-offence-types",
+      "assault-mischief-definitions",
+      "citizen-power-of-arrest"
+    ],
+    "moduleId": 2
+  },
+  {
+    "slug": "assault-mischief-definitions",
+    "title": "Assault and Mischief Offences",
+    "body": "## Assault and Mischief Offences\n\nUnderstanding **assault** and **mischief** is crucial for security professionals responding to incidents.\n\n### Assault (Section 265)\n\nA person commits assault when they:\n\n**Apply force without consent**: Using force intentionally against another person, directly or indirectly. Examples include:\n- Hitting, punching, kicking\n- Spitting\n- Pushing, shoving, grabbing\n\n**Threaten or attempt to apply force**: Making threats or gestures that cause someone to believe on reasonable grounds you have present ability to carry out the threat.\n\n**Accost while carrying a weapon**: Openly wearing or carrying a weapon (or imitation) while accosting, impeding, or begging from another person.\n\n### Common Assault Scenarios\n\nYou may encounter assaults at:\n- Venues where large crowds gather\n- Properties during night patrols\n- Any location at any time\n\nAssaults can occur under many circumstances and require appropriate response based on the situation.\n\n### Mischief (Section 430)\n\nMischief occurs when someone **wilfully**:\n- Destroys or damages property\n- Renders property dangerous, useless, inoperative, or ineffective\n- Obstructs, interrupts, or interferes with lawful use, enjoyment, or operation of property\n\n**Mischief in relation to data** includes:\n- Destroying or altering data\n- Rendering data meaningless or ineffective\n- Obstructing lawful use of data\n- Denying access to entitled persons\n\n### Vandalism\n\nVandalism falls under mischief—damaging, altering, or destroying property so it cannot be utilized or enjoyed as intended. Vandalism is **an act of violence** requiring careful assessment before intervention. Sometimes observing and making comprehensive notes for police is the best action.",
+    "relatedSlugs": [
+      "criminal-code-offence-types",
+      "use-of-force-principles",
+      "theft-break-enter-offences"
+    ],
+    "moduleId": 2
+  },
+  {
+    "slug": "use-of-force-principles",
+    "title": "Use of Force Principles for Security Professionals",
+    "body": "## Use of Force Principles for Security Professionals\n\n**The most important rule about use of force**: Avoid it as much as possible.\n\n### Fundamental Principle\n\nAs a security professional, you have **no more or no fewer rights than any other citizen**. Most situations can be handled through skilled communication. Escalating to force is risky for your physical well-being and professional reputation.\n\n### Section 25: When Force is Permitted\n\nYou may use **reasonable force** when:\n- **Aiding a police or peace officer** to stop flight of a suspected criminal, settle a disturbance, or at the officer's request\n- **Protecting yourself or others** from harm or injury (self-defence)\n- **Stopping a criminal act** (e.g., pulling someone back from breaking into a home)\n\nYou must act on **reasonable grounds** and use only **as much force as is necessary** for the lawful purpose.\n\n### Section 26: Excessive Force\n\nYou can be **criminally responsible** for any excess force according to the nature and quality of the act. Even without criminal charges, you may face:\n- Discipline or dismissal by your employer\n- Civil lawsuits\n- Reputation damage\n\n### What is Excessive Force?\n\n**\"Reasonable force\"** depends on the situation. Force must be:\n- Consistent with the subject's physical and mental characteristics\n- Appropriate to the situation at hand\n\nExample: A small, fearful person shoplifting cosmetics requires minimal restraint (wrist/elbow grab). Intoxicated individuals fighting at a stadium require enough force to separate and restrain them, but not hitting or kicking.\n\n### Section 27: Prevention of Offences\n\nYou may use **reasonably necessary force** to prevent commission of an offence that:\n- Allows arrest without warrant\n- Would likely cause immediate and serious injury to persons or property\n\n**Recommendation**: Take an appropriate course focusing on use of force and personal safety techniques.",
+    "relatedSlugs": [
+      "how-to-make-lawful-arrest",
+      "exceeding-authority-consequences",
+      "charter-rights-security-professionals"
+    ],
+    "moduleId": 2
+  },
+  {
+    "slug": "search-seizure-security-work",
+    "title": "Search and Seizure in Security Work",
+    "body": "## Search and Seizure in Security Work\n\n**Section 8** of the Canadian Charter of Rights and Freedoms protects everyone from unreasonable search or seizure. Security professionals must understand their limited search authority.\n\n### No Power to Search in Law\n\nA security professional has **no power in law** to search persons or their property. Any search you conduct must be lawful and respectful of Charter rights.\n\n### Search With Consent\n\nAt large venues (concerts, sporting events), bag searches are common. This is **\"search with consent\"**:\n- Entry to the facility is conditional on allowing the search\n- Individuals retain the right to refuse and not enter\n- You have the right to deny access if they refuse the search\n\n**Critical Rule**: If someone grants permission then **changes their mind**, you must **stop immediately** when they tell you to stop.\n\n### Search After Arrest\n\nIf you have lawfully arrested someone under **Section 494**, you may search if you have reason to believe they are carrying:\n- A weapon\n- Evidence of the witnessed offence\n- Items suggesting means of escape\n- Stolen property\n\n**Best Practice**: When possible, **do not search**. Wait for police to arrive, advise them of your concerns, and request they perform the search.\n\n### Seizure Limitations\n\nYou cannot seize items from individuals who have not been arrested. For example, if someone has alcohol at a venue entrance where it's prohibited, you can:\n- Refuse them entry\n- Ask them to dispose of the alcohol\n- Explain their choice: dispose of alcohol and enter, or keep it and leave\n\nYou **cannot** take the alcohol from them—that would be seizure without authority.",
+    "relatedSlugs": [
+      "charter-rights-security-professionals",
+      "how-to-make-lawful-arrest",
+      "citizen-power-of-arrest"
+    ],
+    "moduleId": 2
+  },
+  {
+    "slug": "trespassing-legislation-alberta",
+    "title": "Trespassing Legislation in Alberta",
+    "body": "## Trespassing Legislation in Alberta\n\nSecurity professionals frequently deal with trespassers. Two key pieces of Alberta legislation govern trespassing: the **Trespass to Premises Act** and the **Petty Trespass Act**.\n\n### Trespass to Premises Act\n\nThis Act authorizes you—as a representative of the property owner—to enforce its provisions.\n\n**Section 2** prohibits trespassing where notice has been given. Notice may be:\n- **Oral or written** by the owner or authorized representative\n- **Signs visibly displayed** at entrances and fence corners\n\nWhen signs are properly displayed, persons are **deemed to have had notice**.\n\n**Section 4** makes drivers liable when trespass is committed by motor vehicle.\n\n**Section 5** grants arrest authority:\n- Peace officers may arrest trespassers\n- **Property owners or authorized representatives** (including security professionals) may arrest\n- If a non-peace officer arrests, they must deliver the trespasser to police **as soon as practicable**\n\n### Petty Trespass Act\n\n**Section 2(1)** makes it an offence to:\n- Enter land when entry is prohibited under Section 2.1 without permission\n- Not leave immediately after being directed by the owner, occupier, or authorized person\n\n**Section 2.1** defines how entry may be prohibited:\n- By notice (oral, written, or posted signs)\n- Automatically on lawns, gardens, cultivated land\n- Land surrounded by fence or natural boundary\n- Land enclosed indicating owner's intent to keep persons off\n\n### Your Authority\n\nAs a security professional, you may provide **oral notice** telling persons they cannot enter certain areas. If they ignore your notice and enter, they commit an offence.\n\n### Best Practices\n\n- Ask trespassers to leave—if they comply, you've achieved your goal\n- Call police if individuals won't comply\n- Consider arrest only if police response is too slow and behaviour escalates to criminal activity\n- Always prioritize safety when deciding whether to arrest",
+    "relatedSlugs": [
+      "citizen-power-of-arrest",
+      "assault-mischief-definitions",
+      "exceeding-authority-consequences"
+    ],
+    "moduleId": 2
+  },
+  {
+    "slug": "exceeding-authority-consequences",
+    "title": "Consequences of Exceeding Your Authority",
+    "body": "## Consequences of Exceeding Your Authority\n\nUnderstanding the limits of your authority is essential. Exceeding those limits carries serious consequences.\n\n### Criminal Liability\n\n**Section 26 of the Criminal Code** makes you criminally responsible for excessive force. Every person authorized by law to use force is accountable for any excess according to the nature and quality of the act.\n\nYou can face **criminal charges** if you:\n- Use excessive force during an arrest\n- Make an unlawful arrest\n- Conduct unreasonable searches\n- Detain someone arbitrarily\n\n### Employment Consequences\n\nEven without criminal charges, exceeding your authority may result in:\n- **Disciplinary action** from your employer\n- **Termination of employment**\n- **Loss of security license**\n- Difficulty finding future employment in the industry\n\n### Civil Liability\n\nYou and your employer may face **civil lawsuits** for:\n- Unlawful arrest or detention\n- Assault (improper use of force)\n- Violation of Charter rights\n- Negligence\n\nCivil suits are costly and time-consuming, damaging both your reputation and your employer's reputation.\n\n### Protection Through Knowledge\n\nYou should **not view limitations as restricting your ability** to do your job. Rather, they are **protections**. By:\n- Familiarizing yourself with permissible behaviour\n- Understanding what is not permitted\n- Performing in accordance with that knowledge\n\nYou **limit your vulnerability** to legal action and civil suits.\n\n### Primary Role\n\nRemember: your primary duty is to **safeguard people and property**. Plan to be **observing and reporting criminal activity**, leaving law enforcement to police. This approach protects you, your employer, and the individuals you encounter.\n\n### Key Principle\n\nAs a security professional, you have **the same rights as other citizens**—no more, no less. Never confuse your position with the powers granted to police officers or peace officers appointed by the Solicitor General and Ministry of Public Safety.",
+    "relatedSlugs": [
+      "use-of-force-principles",
+      "charter-rights-security-professionals",
+      "how-to-make-lawful-arrest"
+    ],
+    "moduleId": 2
+  }
+]
