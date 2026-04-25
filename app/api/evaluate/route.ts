@@ -96,7 +96,10 @@ async function evaluate(
 
   const response = await runtimeClient.send(command);
   const responseBody = JSON.parse(new TextDecoder().decode(response.body));
-  const assistantText = responseBody.content[0].text.trim();
+  let assistantText = responseBody.content[0].text.trim();
+  
+  // Strip markdown fences in case Claude returns them despite the prompt
+  assistantText = assistantText.replace(/^```json\s*/i, "").replace(/^```\s*/, "").replace(/```$/i, "").trim();
 
   return JSON.parse(assistantText);
 }
