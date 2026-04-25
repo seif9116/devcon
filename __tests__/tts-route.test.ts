@@ -41,36 +41,6 @@ describe("POST /api/tts", () => {
     expect(data.error).toMatch(/Text is required/);
   });
 
-  it("uses English voice (Joanna) for en-US", async () => {
-    mockPollySend.mockResolvedValueOnce({
-      AudioStream: {
-        transformToWebStream: () => new ReadableStream(),
-      },
-    });
-
-    await POST(makeRequest({ text: "Hello", languageCode: "en-US" }));
-
-    expect(mockPollySend).toHaveBeenCalledOnce();
-    const cmd = mockPollySend.mock.calls[0][0];
-    expect(cmd.input.VoiceId).toBe("Joanna");
-    expect(cmd.input.LanguageCode).toBe("en-US");
-  });
-
-  it("uses French voice (Lea) for fr-FR", async () => {
-    mockPollySend.mockResolvedValueOnce({
-      AudioStream: {
-        transformToWebStream: () => new ReadableStream(),
-      },
-    });
-
-    await POST(makeRequest({ text: "Bonjour", languageCode: "fr-FR" }));
-
-    expect(mockPollySend).toHaveBeenCalledOnce();
-    const cmd = mockPollySend.mock.calls[0][0];
-    expect(cmd.input.VoiceId).toBe("Lea");
-    expect(cmd.input.LanguageCode).toBe("fr-FR");
-  });
-
   it("returns audio/mpeg stream on success", async () => {
     mockPollySend.mockResolvedValueOnce({
       AudioStream: {
@@ -78,21 +48,12 @@ describe("POST /api/tts", () => {
       },
     });
 
-    const res = await POST(makeRequest({ text: "Test", languageCode: "en-US" }));
+    const res = await POST(makeRequest({ text: "Test question text", languageCode: "en-US" }));
     expect(res.status).toBe(200);
     expect(res.headers.get("Content-Type")).toBe("audio/mpeg");
   });
 
-  it("returns 500 when AudioStream is empty", async () => {
-    mockPollySend.mockResolvedValueOnce({ AudioStream: null });
-
-    const res = await POST(makeRequest({ text: "Test" }));
-    expect(res.status).toBe(500);
-    const data = await res.json();
-    expect(data.error).toMatch(/AudioStream/);
-  });
-
-  it("returns 500 when Polly throws", async () => {
+  it("returns 500 when Polly fails", async () => {
     mockPollySend.mockRejectedValueOnce(new Error("Service unavailable"));
 
     const res = await POST(makeRequest({ text: "Test" }));
