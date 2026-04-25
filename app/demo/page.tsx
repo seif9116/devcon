@@ -6,7 +6,7 @@ import { QuestionsData, Question, QuestionLevel } from "@/lib/types";
 import questionsData from "@/public/questions.json";
 import { playDing, playClunk, playLevelUp } from "@/lib/sounds";
 
-type Phase = "answering" | "correct" | "wrong" | "confidence";
+type Phase = "answering" | "correct" | "wrong" | "confidence" | "explain" | "evaluating" | "results";
 
 function getLevel(question: Question, level: 1 | 2 | 3): QuestionLevel {
   if (level === 1) return question.level1;
@@ -24,6 +24,12 @@ export default function DemoPage() {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [isPlayingTTS, setIsPlayingTTS] = useState(false);
   const [langOverride, setLangOverride] = useState<"fr" | "en" | null>(null);
+  const [explanation, setExplanation] = useState("");
+  const [evaluationResult, setEvaluationResult] = useState<{
+    english: { score: number; feedback: string };
+    concepts: { score: number; feedback: string };
+  } | null>(null);
+  const [evalError, setEvalError] = useState("");
 
   let currentLevel = getLevel(question, activeLevel);
   let activeLang = activeLevel === 1 ? "fr" : "en";
@@ -40,8 +46,8 @@ export default function DemoPage() {
     setSelectedAnswer(optionIndex);
     if (optionIndex === currentLevel.answer) {
       if (activeLevel === 3) {
-        playLevelUp();
-        setPhase("correct");
+        playDing();
+        setPhase("explain");
       } else {
         playDing();
         setPhase("confidence");
@@ -68,6 +74,39 @@ export default function DemoPage() {
     setPhase("answering");
     setSelectedAnswer(null);
     setLangOverride(null);
+    setExplanation("");
+    setEvaluationResult(null);
+    setEvalError("");
+  }
+
+  async function handleExplanationSubmit() {
+    if (!explanation.trim()) return;
+    setPhase("evaluating");
+    setEvalError("");
+    try {
+      const res = await fetch("/api/evaluate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          questionText: currentLevel.text,
+          correctAnswer: currentLevel.options[currentLevel.answer],
+          userExplanation: explanation,
+        }),
+      });
+      if (!res.ok) throw new Error("Evaluation failed");
+      const data = await res.json();
+      setEvaluationResult(data);
+      const passed = data.english.score >= 3 && data.concepts.score >= 3;
+      if (passed) {
+        playLevelUp();
+      } else {
+        playClunk();
+      }
+      setPhase("results");
+    } catch {
+      setEvalError("Something went wrong. Please try again.");
+      setPhase("explain");
+    }
   }
 
   function forceLevel(level: 1 | 2 | 3) {
@@ -221,7 +260,7 @@ export default function DemoPage() {
             })}
           </div>
 
-          {/* Correct at level 3 — mastered */}
+          {/* Correct at level 3 — mastered (Legacy fallback, now replaced by explain flow but kept for safety) */}
           {phase === "correct" && (
             <div className="mt-8 animate-scale-in">
               <div className="bg-green-50/80 border border-green-200 rounded-2xl p-6 text-center shadow-sm relative overflow-hidden backdrop-blur-sm">
@@ -292,6 +331,102 @@ export default function DemoPage() {
                   </button>
                 </div>
               </div>
+            </div>
+          )}
+
+          {/* Explain phase — Level 3 explain your answer */}
+          {phase === "explain" && (
+            <div className="mt-8 animate-scale-in">
+              <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6 shadow-sm">
+                <div className="mb-4">
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Explain your answer</h3>
+                  <p className="text-blue-700 text-sm">
+                    Why is &ldquo;<span className="font-semibold">{currentLevel.options[currentLevel.answer]}</span>&rdquo; the correct answer? Use proper terminology.
+                  </p>
+                </div>
+                <textarea
+                  value={explanation}
+                  onChange={(e) => setExplanation(e.target.value)}
+                  placeholder="Type your explanation here..."
+                  className="w-full border-2 border-white rounded-xl p-4 text-gray-800 min-h-[140px] focus:border-blue-400 focus:ring-4 focus:ring-blue-100 outline-none resize-y transition-all shadow-inner bg-white/60 focus:bg-white"
+                />
+                {evalError && (
+                  <p className="text-red-500 text-sm mt-3 font-medium flex items-center gap-1.5">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    {evalError}
+                  </p>
+                )}
+                <button
+                  onClick={handleExplanationSubmit}
+                  disabled={!explanation.trim()}
+                  className="mt-4 w-full bg-blue-600 text-white py-3.5 rounded-xl font-semibold hover:bg-blue-700 shadow-md transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Submit Explanation
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Evaluating phase — spinner */}
+          {phase === "evaluating" && (
+            <div className="mt-8 animate-fade-in text-center p-8 bg-gray-50 rounded-2xl border border-gray-100">
+              <div className="mx-auto w-12 h-12 border-4 border-blue-100 border-t-blue-600 rounded-full animate-spin mb-4 shadow-sm" />
+              <p className="text-gray-900 font-semibold mb-1">Evaluating your explanation...</p>
+              <p className="text-gray-500 text-sm">Consulting the ABST manual</p>
+            </div>
+          )}
+
+          {/* Results phase — show scores and feedback */}
+          {phase === "results" && evaluationResult && (
+            <div className="mt-8 animate-slide-up">
+              {evaluationResult.english.score >= 3 && evaluationResult.concepts.score >= 3 ? (
+                <div className="bg-green-50/80 border border-green-200 rounded-2xl p-6 text-center shadow-sm relative overflow-hidden backdrop-blur-sm mb-6">
+                  <div className="mx-auto flex items-center justify-center w-14 h-14 rounded-full bg-white mb-3 shadow-sm border border-green-100 animate-pulse-glow z-10 relative">
+                    <span className="text-2xl">⭐</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-1 relative z-10">Passed!</h3>
+                  <p className="text-green-700 relative z-10 text-sm font-medium">Demo Mastered.</p>
+                </div>
+              ) : (
+                <div className="bg-orange-50/80 border border-orange-200 rounded-2xl p-6 text-center shadow-sm mb-6">
+                  <div className="mx-auto flex items-center justify-center w-12 h-12 rounded-full bg-white mb-3 shadow-sm border border-orange-100">
+                    <span className="text-xl">🔄</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Not quite</h3>
+                  <p className="text-orange-700 text-sm font-medium">In a real test, this card would come back around.</p>
+                </div>
+              )}
+
+              <div className="space-y-4">
+                <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="font-semibold text-gray-900">English Proficiency</p>
+                    <div className={`px-2.5 py-0.5 rounded-md font-bold text-sm ${evaluationResult.english.score >= 3 ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                      {evaluationResult.english.score}/5
+                    </div>
+                  </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">{evaluationResult.english.feedback}</p>
+                </div>
+
+                <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="font-semibold text-gray-900">Conceptual Understanding</p>
+                    <div className={`px-2.5 py-0.5 rounded-md font-bold text-sm ${evaluationResult.concepts.score >= 3 ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                      {evaluationResult.concepts.score}/5
+                    </div>
+                  </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">{evaluationResult.concepts.feedback}</p>
+                </div>
+              </div>
+
+              <button
+                onClick={resetPhase}
+                className="mt-6 bg-gray-900 text-white font-semibold w-full px-8 py-3.5 rounded-xl flex items-center justify-center shadow-md active:scale-[0.98] transition-all"
+              >
+                Restart Demo <span className="ml-2 font-bold">↺</span>
+              </button>
             </div>
           )}
         </div>
