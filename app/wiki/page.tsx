@@ -2,7 +2,8 @@
 
 import { useState, useMemo, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import ReactMarkdown from "react-markdown";
+import dynamic from "next/dynamic";
+const ReactMarkdown = dynamic(() => import("react-markdown"), { ssr: false });
 import type { WikiData, WikiPage as WikiPageType } from "@/lib/types";
 import wikiData from "@/public/wiki/pages.json";
 
