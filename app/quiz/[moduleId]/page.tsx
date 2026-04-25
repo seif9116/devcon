@@ -26,6 +26,7 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [progressMap, setProgressMap] = useState<Record<string, QuestionProgress>>({});
   const [attempt, setAttempt] = useState(0);
+  const [streak, setStreak] = useState(0);
 
   useEffect(() => {
     if (!mod) return;
@@ -63,15 +64,16 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
   const currentLevel = getLevel(question, qProgress.level);
   const completedCount = Object.values(progressMap).filter((p) => p.completed).length;
   const totalCount = mod.questions.length;
-  // Overall progress: sum of all levels / max possible (3 per question)
   const totalLevelProgress = Object.values(progressMap).reduce(
     (sum, p) => sum + (p.completed ? 3 : p.level - 1), 0
   );
   const maxLevelProgress = totalCount * 3;
+  const progressPct = (totalLevelProgress / maxLevelProgress) * 100;
 
   function handleAnswer(optionIndex: number) {
     setSelectedAnswer(optionIndex);
     if (optionIndex === currentLevel.answer) {
+      setStreak((s) => s + 1);
       if (qProgress.level === 3) {
         playLevelUp();
         const updated: QuestionProgress = { level: 3, completed: true };
@@ -84,6 +86,7 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
       }
     } else {
       playClunk();
+      setStreak(0);
       const newLevel = Math.max(1, qProgress.level - 1) as 1 | 2 | 3;
       const updated: QuestionProgress = { level: newLevel, completed: false };
       updateQuestionProgress(mod!.id, question.id, updated);
@@ -118,66 +121,104 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
     qProgress.level === 1 ? "Français" : qProgress.level === 2 ? "Simple English" : "Exam English";
 
   return (
-    <main className="min-h-screen bg-gray-50 p-4 flex flex-col">
-      <div className="max-w-xl mx-auto w-full mb-4">
-        <button
-          onClick={() => router.push("/modules")}
-          className="text-blue-600 text-xl mb-2 hover:opacity-70"
-        >
-          ←
-        </button>
-        <h1 className="text-lg font-bold text-gray-900">Module {mod.id}</h1>
-        <p className="text-sm text-gray-500 mt-1">{currentIndex + 1} / {totalCount}</p>
-        <div className="flex items-center gap-2 mt-1">
-          <div className="flex-1 bg-gray-200 rounded-full h-2">
+    <main className="min-h-screen bg-gray-50/80 p-4 flex flex-col">
+      {/* Header */}
+      <div className="max-w-xl mx-auto w-full mb-6 animate-fade-in">
+        <div className="flex items-center justify-between mb-3">
+          <button
+            onClick={() => router.push("/modules")}
+            className="text-gray-400 hover:text-gray-600 transition-colors text-sm flex items-center gap-1"
+          >
+            <span>←</span> Modules
+          </button>
+          {streak >= 2 && (
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-orange-500 bg-orange-50 px-2.5 py-1 rounded-full animate-scale-in">
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 23a7.5 7.5 0 01-5.138-12.963C8.204 8.774 11.5 6.5 11 1.5c6 4 9 8 3 14 1 0 2.5 0 5-2.47.27.97.5 2.08.5 3.47a7.5 7.5 0 01-7.5 7.5z"/>
+              </svg>
+              {streak} streak
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-center justify-between mb-1.5">
+          <h1 className="text-lg font-bold text-gray-900 tracking-tight">Module {mod.id}</h1>
+          <span className="text-xs text-gray-400 font-medium">
+            {currentIndex + 1} of {totalCount}
+          </span>
+        </div>
+
+        {/* Progress bar */}
+        <div className="flex items-center gap-3">
+          <div className="flex-1 bg-gray-200/70 rounded-full h-2 overflow-hidden">
             <div
-              className="bg-blue-500 h-2 rounded-full transition-all"
-              style={{ width: `${(totalLevelProgress / maxLevelProgress) * 100}%` }}
+              className="h-2 rounded-full transition-all duration-700 ease-out"
+              style={{
+                width: `${progressPct}%`,
+                background:
+                  progressPct === 100
+                    ? "linear-gradient(90deg, #22c55e, #16a34a)"
+                    : progressPct > 60
+                      ? "linear-gradient(90deg, #3b82f6, #8b5cf6)"
+                      : "linear-gradient(90deg, #3b82f6, #60a5fa)",
+              }}
             />
           </div>
-          <span className="text-xs text-gray-500">
-            ⭐ {completedCount}/{totalCount}
+          <span className="text-xs text-gray-500 font-medium tabular-nums">
+            {completedCount}/{totalCount}
           </span>
         </div>
       </div>
 
-      <div className="max-w-xl mx-auto w-full">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-          <div className="flex items-center gap-2 mb-4">
+      <div className="max-w-xl mx-auto w-full animate-slide-up">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          {/* Level badge */}
+          <div className="flex items-center gap-2 mb-5">
             <span
-              className={`text-xs font-medium px-2 py-1 rounded-full ${
+              className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
                 qProgress.level === 1
-                  ? "bg-purple-100 text-purple-700"
+                  ? "bg-purple-50 text-purple-600 border border-purple-100"
                   : qProgress.level === 2
-                  ? "bg-yellow-100 text-yellow-700"
-                  : "bg-red-100 text-red-700"
+                  ? "bg-amber-50 text-amber-600 border border-amber-100"
+                  : "bg-rose-50 text-rose-600 border border-rose-100"
               }`}
             >
               Lv. {qProgress.level} — {levelLabel}
             </span>
+            {/* Level dots */}
+            <div className="flex gap-1 ml-auto">
+              {[1, 2, 3].map((l) => (
+                <div
+                  key={l}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    l <= qProgress.level ? "bg-blue-500" : "bg-gray-200"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
-          <p className="text-xl font-medium text-gray-900 mb-6">
+          {/* Question text */}
+          <p className="text-lg font-medium text-gray-900 mb-6 leading-relaxed">
             {currentLevel.text}
           </p>
 
-          {/* Options — always visible, highlighted after answer */}
-          <div className="space-y-2" key={`${question.id}-${attempt}`}>
+          {/* Options */}
+          <div className="space-y-2.5" key={`${question.id}-${attempt}`}>
             {currentLevel.options.map((opt, i) => {
               let cls =
-                "w-full text-left p-3 rounded-lg border-2 transition-all text-gray-800";
+                "w-full text-left p-3.5 rounded-xl border transition-all text-gray-800 text-[0.94rem]";
               if (phase !== "answering") {
-                // After answering: highlight correct/wrong
                 if (i === currentLevel.answer) {
-                  cls += " border-green-500 bg-green-50";
+                  cls += " border-green-400 bg-green-50 ring-1 ring-green-200";
                 } else if (i === selectedAnswer) {
-                  cls += " border-red-500 bg-red-50";
+                  cls += " border-red-400 bg-red-50 animate-shake";
                 } else {
-                  cls += " border-gray-200 opacity-50";
+                  cls += " border-gray-100 opacity-40";
                 }
               } else {
                 cls +=
-                  " border-gray-200 hover:border-blue-400 hover:bg-blue-50 cursor-pointer shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]";
+                  " border-gray-100 hover:border-blue-300 hover:bg-blue-50/50 cursor-pointer shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]";
               }
               return (
                 <button
@@ -186,8 +227,8 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
                   disabled={phase !== "answering"}
                   className={cls}
                 >
-                  <span className="font-medium text-gray-400 mr-2">
-                    {String.fromCharCode(65 + i)}.
+                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-gray-100 text-gray-500 text-xs font-bold mr-3">
+                    {String.fromCharCode(65 + i)}
                   </span>
                   {opt}
                 </button>
@@ -195,15 +236,17 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
             })}
           </div>
 
-          {/* Correct at level 3 — mastered, next arrow */}
+          {/* Correct at level 3 — mastered */}
           {phase === "correct" && (
-            <div className="mt-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+            <div className="mt-8 animate-scale-in">
               <div className="bg-green-50 border border-green-200 rounded-2xl p-6 text-center shadow-sm">
-                <div className="mx-auto flex items-center justify-center w-14 h-14 rounded-full bg-white mb-4 shadow-sm border border-green-100">
-                  <span className="text-2xl mt-1">⭐</span>
+                <div className="mx-auto flex items-center justify-center w-14 h-14 rounded-full bg-white mb-4 shadow-sm border border-green-100 animate-pulse-glow">
+                  <svg className="w-7 h-7 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                  </svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Mastered!</h3>
-                <p className="text-gray-600 mb-6 text-sm">You&apos;ve reached the maximum level for this question.</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-1">Mastered!</h3>
+                <p className="text-gray-500 mb-6 text-sm">You&apos;ve reached the maximum level for this question.</p>
                 <button
                   onClick={advanceToNext}
                   className="bg-gray-900 text-white font-semibold w-full sm:w-auto px-8 py-3.5 rounded-xl flex items-center justify-center mx-auto hover:bg-gray-800 shadow-md active:scale-[0.98] transition-all"
@@ -214,16 +257,17 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
             </div>
           )}
 
-          {/* Wrong answer — show feedback and next button */}
+          {/* Wrong answer */}
           {phase === "wrong" && (
-            <div className="mt-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+            <div className="mt-8 animate-scale-in">
               <div className="bg-red-50 border border-red-200 rounded-2xl p-6 text-center shadow-sm">
                 <div className="mx-auto flex items-center justify-center w-14 h-14 rounded-full bg-white mb-4 shadow-sm border border-red-100 text-red-500">
-                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Not quite</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-1">Not quite</h3>
+                <p className="text-gray-500 mb-6 text-sm">The correct answer is highlighted above.</p>
                 <button
                   onClick={advanceToNext}
                   className="bg-gray-900 text-white font-semibold w-full sm:w-auto px-8 py-3.5 rounded-xl flex items-center justify-center mx-auto hover:bg-gray-800 shadow-md active:scale-[0.98] transition-all"
@@ -236,8 +280,11 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
 
           {/* Confidence overlay modal */}
           {phase === "confidence" && (
-            <div className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm flex items-center justify-center z-[100] p-4 transition-all hover:cursor-pointer" onClick={(e) => { if (e.target === e.currentTarget) handleConfidence(true); }}>
-              <div className="bg-white rounded-[2rem] p-8 text-center max-w-md w-full shadow-2xl animate-in zoom-in-95 duration-300">
+            <div
+              className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm flex items-center justify-center z-[100] p-4 animate-fade-in"
+              onClick={(e) => { if (e.target === e.currentTarget) handleConfidence(true); }}
+            >
+              <div className="bg-white rounded-[2rem] p-8 text-center max-w-md w-full shadow-2xl animate-scale-in">
                 <div className="mx-auto flex items-center justify-center w-16 h-16 rounded-full bg-green-50 mb-4 border border-green-100 shadow-sm">
                   <svg className="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
