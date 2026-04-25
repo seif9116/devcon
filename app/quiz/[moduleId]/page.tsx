@@ -121,7 +121,7 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
     qProgress.level === 1 ? "Français" : qProgress.level === 2 ? "Simple English" : "Exam English";
 
   return (
-    <main className="min-h-screen bg-gray-50/80 p-4 flex flex-col">
+    <main className="min-h-screen bg-white p-4 flex flex-col">
       {/* Header */}
       <div className="max-w-xl mx-auto w-full mb-6 animate-fade-in">
         <div className="flex items-center justify-between mb-3">
@@ -142,15 +142,15 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
         </div>
 
         <div className="flex items-center justify-between mb-1.5">
-          <h1 className="text-lg font-bold text-gray-900 tracking-tight">Module {mod.id}</h1>
-          <span className="text-xs text-gray-400 font-medium">
-            {currentIndex + 1} of {totalCount}
-          </span>
+          <h1 className="text-lg font-bold text-gray-900 tracking-tight">
+            Module {mod.id}
+            <span className="text-gray-400 font-normal text-sm ml-2">Question {currentIndex + 1} of {totalCount}</span>
+          </h1>
         </div>
 
         {/* Progress bar */}
         <div className="flex items-center gap-3">
-          <div className="flex-1 bg-gray-200/70 rounded-full h-2 overflow-hidden">
+          <div className="flex-1 bg-gray-100 rounded-full h-2 overflow-hidden">
             <div
               className="h-2 rounded-full transition-all duration-700 ease-out"
               style={{
@@ -164,8 +164,8 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
               }}
             />
           </div>
-          <span className="text-xs text-gray-500 font-medium tabular-nums">
-            {completedCount}/{totalCount}
+          <span className="text-xs text-gray-400 font-medium tabular-nums">
+            {completedCount}/{totalCount} mastered
           </span>
         </div>
       </div>
