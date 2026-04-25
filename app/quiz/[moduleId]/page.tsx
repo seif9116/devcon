@@ -84,10 +84,7 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
       const updated: QuestionProgress = { level: newLevel, completed: false };
       updateQuestionProgress(mod!.id, question.id, updated);
       setProgressMap((prev) => ({ ...prev, [question.id]: updated }));
-      // Re-present the same question at the lower level immediately
-      setSelectedAnswer(null);
-      setPhase("answering");
-      setAttempt((a) => a + 1);
+      setPhase("wrong");
     }
   }
 
@@ -200,6 +197,19 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
               <button
                 onClick={advanceToNext}
                 className="bg-green-600 text-white w-14 h-14 rounded-full text-2xl flex items-center justify-center mx-auto hover:bg-green-700 transition-colors active:scale-95"
+              >
+                →
+              </button>
+            </div>
+          )}
+
+          {/* Wrong answer — show feedback and next button */}
+          {phase === "wrong" && (
+            <div className="text-center mt-4">
+              <p className="text-red-600 font-medium mb-3">Wrong answer!</p>
+              <button
+                onClick={advanceToNext}
+                className="bg-blue-600 text-white w-14 h-14 rounded-full text-2xl flex items-center justify-center mx-auto hover:bg-blue-700 transition-colors active:scale-95"
               >
                 →
               </button>
