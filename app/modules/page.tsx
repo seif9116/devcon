@@ -68,6 +68,34 @@ export default function ModulesPage() {
 
         {/* Module cards */}
         <div className="space-y-3 stagger-children">
+          {/* Demo Module Card */}
+          <button
+            onClick={() => router.push(`/demo`)}
+            className="animate-slide-up w-full bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-5 shadow-sm border border-purple-100 hover:border-purple-300 hover:shadow-md hover:-translate-y-0.5 transition-all text-left group"
+          >
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center font-bold text-sm bg-purple-100 text-purple-600 transition-colors">
+                ✨
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between mb-1">
+                  <h2 className="font-semibold text-gray-900 truncate pr-2">
+                    Module Dev (Demo)
+                  </h2>
+                  <span className="flex-shrink-0 text-xs font-semibold text-purple-600 bg-white px-2 py-0.5 rounded-full shadow-sm">
+                    Interactive
+                  </span>
+                </div>
+                <p className="text-gray-500 text-sm truncate">
+                  Test the adaptive progression engine instantly
+                </p>
+              </div>
+              <span className="flex-shrink-0 text-gray-300 group-hover:text-purple-400 group-hover:translate-x-0.5 transition-all self-center">
+                →
+              </span>
+            </div>
+          </button>
+
           {data.modules.map((mod, i) => {
             const comp = completions[i] ?? {
               completed: 0,
