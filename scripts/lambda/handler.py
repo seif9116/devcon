@@ -21,7 +21,7 @@ import boto3
 
 KB_ID = os.environ.get("KB_ID", "SBTCWY1W77")
 REGION = os.environ.get("AWS_REGION", "us-east-1")
-MODEL_ID = "anthropic.claude-opus-4-6-v1"
+MODEL_ID = "us.anthropic.claude-opus-4-6-v1"
 
 CORS_HEADERS = {
     "Access-Control-Allow-Origin": "*",
@@ -189,5 +189,7 @@ def handler(event, context):
     try:
         result = _evaluate(reference, question_text, correct_answer, user_explanation)
         return _response(200, result)
-    except Exception:
+    except Exception as exc:
+        import traceback
+        traceback.print_exc()
         return _response(500, {"error": "Evaluation failed. Please try again."})
