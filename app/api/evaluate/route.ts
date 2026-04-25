@@ -129,6 +129,10 @@ export async function POST(request: Request) {
     const reference = await retrieveContext(searchQuery);
     const result = await evaluate(reference, questionText, correctAnswer, userExplanation);
 
+    if (!result.teaching) {
+      result.teaching = `The correct answer is "${correctAnswer}". Review the ABST module material for this topic to strengthen your understanding.`;
+    }
+
     return Response.json(result);
   } catch (error) {
     console.error("Evaluation error:", error);
