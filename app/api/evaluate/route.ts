@@ -22,14 +22,14 @@ const SYSTEM_PROMPT =
   "2. **Conceptual Understanding (1-5):** Assess whether the candidate demonstrates " +
   "correct concepts and uses proper ABST terminology. A score of 3 means the core " +
   "concept is understood with mostly correct terminology.\n\n" +
-  "3. **Teaching:** ALWAYS provide a teaching explanation. " +
-  "If the candidate's explanation has errors or gaps, explain what is wrong and why, " +
-  "then explain the correct concept according to the ABST modules. " +
-  "If the candidate's explanation is good but not perfect, acknowledge what they got right " +
-  "and explain how it could be stronger or more precise. " +
-  "If the explanation is excellent, confirm it and add any deeper insight from the modules. " +
-  "Reference specific ABST terminology and concepts.\n\n" +
-  "You MUST incorporate feedback from the provided module reference material in your explanation. " +
+  "3. **Teaching (MANDATORY — this is the most important field):** " +
+  "Regardless of the candidate's answer quality, you MUST use the provided reference material " +
+  "to explain the correct answer and the underlying concept. " +
+  "Start by stating what the correct answer is and WHY it is correct, " +
+  "citing specific facts, rules, or definitions from the ABST reference material. " +
+  "Then, if the candidate got something wrong, explain what was wrong about their reasoning. " +
+  "If their answer was good, explain how it could be even more precise using ABST terminology. " +
+  "This field must ALWAYS contain a real explanation from the reference material — never leave it vague.\n\n" +
   "Please limit your total feedback text to a maximum of 350 words.\n\n" +
   "You MUST respond with ONLY valid JSON in exactly this format — no extra text, " +
   "no markdown fences:\n" +
