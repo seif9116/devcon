@@ -27,6 +27,8 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
   const [progressMap, setProgressMap] = useState<Record<string, QuestionProgress>>({});
   const [attempt, setAttempt] = useState(0);
   const [streak, setStreak] = useState(0);
+  const [isPlayingTTS, setIsPlayingTTS] = useState(false);
+  const [langOverride, setLangOverride] = useState<"fr" | "en" | null>(null);
 
   useEffect(() => {
     if (!mod) return;
@@ -61,7 +63,18 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
 
   const question = mod.questions[currentIndex];
   const qProgress = progressMap[question.id] ?? { level: 1 as const, completed: false };
-  const currentLevel = getLevel(question, qProgress.level);
+  
+  let currentLevel = getLevel(question, qProgress.level);
+  let activeLang = qProgress.level === 1 ? "fr" : "en";
+
+  if (langOverride === "fr" && qProgress.level !== 1) {
+    currentLevel = getLevel(question, 1);
+    activeLang = "fr";
+  } else if (langOverride === "en" && qProgress.level === 1) {
+    currentLevel = getLevel(question, 2);
+    activeLang = "en";
+  }
+
   const completedCount = Object.values(progressMap).filter((p) => p.completed).length;
   const totalCount = mod.questions.length;
   const totalLevelProgress = Object.values(progressMap).reduce(
@@ -109,11 +122,43 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
   function advanceToNext() {
     setPhase("answering");
     setSelectedAnswer(null);
+    setLangOverride(null);
     const next = findNextIncomplete(currentIndex + 1);
     if (next === null) {
       router.push(`/complete/${mod!.id}`);
     } else {
       setCurrentIndex(next);
+    }
+  }
+
+  async function playTTS() {
+    if (isPlayingTTS) return;
+    setIsPlayingTTS(true);
+    try {
+      const res = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text: currentLevel.text,
+          languageCode: activeLang === "fr" ? "fr-FR" : "en-US",
+        }),
+      });
+
+      if (!res.ok) throw new Error("TTS failed");
+      
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      
+      audio.onended = () => {
+        setIsPlayingTTS(false);
+        URL.revokeObjectURL(url);
+      };
+      
+      audio.play();
+    } catch (err) {
+      console.error(err);
+      setIsPlayingTTS(false);
     }
   }
 
@@ -123,7 +168,7 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
   return (
     <main className="min-h-screen bg-white p-4 flex flex-col">
       {/* Header */}
-      <div className="max-w-xl mx-auto w-full mb-6 animate-fade-in">
+      <div className="max-w-2xl mx-auto w-full mb-8 animate-fade-in">
         <div className="flex items-center justify-between mb-3">
           <button
             onClick={() => router.push("/modules")}
@@ -170,10 +215,10 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
         </div>
       </div>
 
-      <div className="max-w-xl mx-auto w-full animate-slide-up">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+      <div className="max-w-2xl mx-auto w-full animate-slide-up">
+        <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-6 sm:p-10">
           {/* Level badge */}
-          <div className="flex items-center gap-2 mb-5">
+          <div className="flex items-center gap-2 mb-8">
             <span
               className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
                 qProgress.level === 1
@@ -185,6 +230,16 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
             >
               Lv. {qProgress.level} — {levelLabel}
             </span>
+            
+            {/* Lang Toggle */}
+            <button
+              onClick={() => setLangOverride(activeLang === "fr" ? "en" : "fr")}
+              className="ml-2 flex items-center bg-gray-100 rounded-lg p-0.5"
+            >
+              <span className={`px-2 py-0.5 text-[10px] font-bold rounded-md transition-colors ${activeLang === "en" ? "bg-white text-gray-900 shadow-sm" : "text-gray-400 hover:text-gray-600"}`}>EN</span>
+              <span className={`px-2 py-0.5 text-[10px] font-bold rounded-md transition-colors ${activeLang === "fr" ? "bg-white text-gray-900 shadow-sm" : "text-gray-400 hover:text-gray-600"}`}>FR</span>
+            </button>
+
             {/* Level dots */}
             <div className="flex gap-1 ml-auto">
               {[1, 2, 3].map((l) => (
@@ -199,15 +254,31 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
           </div>
 
           {/* Question text */}
-          <p className="text-lg font-medium text-gray-900 mb-6 leading-relaxed">
-            {currentLevel.text}
-          </p>
+          <div className="flex items-start justify-between gap-6 mb-8">
+            <p className="text-xl font-medium text-gray-900 leading-relaxed max-w-[90%]">
+              {currentLevel.text}
+            </p>
+            <button
+              onClick={playTTS}
+              disabled={isPlayingTTS}
+              className={`flex-shrink-0 p-2.5 rounded-xl border transition-all ${
+                isPlayingTTS
+                  ? "bg-blue-50 border-blue-200 text-blue-500 animate-pulse"
+                  : "bg-white border-gray-200 text-gray-400 hover:text-blue-500 hover:border-blue-200 hover:bg-blue-50 shadow-sm active:scale-95"
+              }`}
+              title="Listen to question"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              </svg>
+            </button>
+          </div>
 
           {/* Options */}
-          <div className="space-y-2.5" key={`${question.id}-${attempt}`}>
+          <div className="space-y-4" key={`${question.id}-${attempt}`}>
             {currentLevel.options.map((opt, i) => {
               let cls =
-                "w-full text-left p-3.5 rounded-xl border transition-all text-gray-800 text-[0.94rem]";
+                "w-full text-left p-4 sm:p-5 rounded-2xl border transition-all text-gray-800 text-[0.94rem] sm:text-base";
               if (phase !== "answering") {
                 if (i === currentLevel.answer) {
                   cls += " border-green-400 bg-green-50 ring-1 ring-green-200";
@@ -227,7 +298,7 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
                   disabled={phase !== "answering"}
                   className={cls}
                 >
-                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-gray-100 text-gray-500 text-xs font-bold mr-3">
+                  <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-gray-100/80 text-gray-500 text-xs font-bold mr-4">
                     {String.fromCharCode(65 + i)}
                   </span>
                   {opt}
