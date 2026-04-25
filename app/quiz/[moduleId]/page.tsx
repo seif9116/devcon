@@ -7,7 +7,7 @@ import { getQuestionProgress, updateQuestionProgress } from "@/lib/progress";
 import questionsData from "@/public/questions.json";
 import { playDing, playClunk, playLevelUp } from "@/lib/sounds";
 
-type Phase = "answering" | "correct" | "wrong" | "confidence";
+type Phase = "answering" | "correct" | "wrong" | "confidence" | "explain" | "evaluating" | "results";
 
 function getLevel(question: Question, level: 1 | 2 | 3): QuestionLevel {
   if (level === 1) return question.level1;
@@ -27,6 +27,14 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
   const [progressMap, setProgressMap] = useState<Record<string, QuestionProgress>>({});
   const [attempt, setAttempt] = useState(0);
   const [streak, setStreak] = useState(0);
+  const [isPlayingTTS, setIsPlayingTTS] = useState(false);
+  const [langOverride, setLangOverride] = useState<"fr" | "en" | null>(null);
+  const [explanation, setExplanation] = useState("");
+  const [evaluationResult, setEvaluationResult] = useState<{
+    english: { score: number; feedback: string };
+    concepts: { score: number; feedback: string };
+  } | null>(null);
+  const [evalError, setEvalError] = useState("");
 
   useEffect(() => {
     if (!mod) return;
@@ -61,7 +69,18 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
 
   const question = mod.questions[currentIndex];
   const qProgress = progressMap[question.id] ?? { level: 1 as const, completed: false };
-  const currentLevel = getLevel(question, qProgress.level);
+  
+  let currentLevel = getLevel(question, qProgress.level);
+  let activeLang = qProgress.level === 1 ? "fr" : "en";
+
+  if (langOverride === "fr" && qProgress.level !== 1) {
+    currentLevel = getLevel(question, 1);
+    activeLang = "fr";
+  } else if (langOverride === "en" && qProgress.level === 1) {
+    currentLevel = getLevel(question, 2);
+    activeLang = "en";
+  }
+
   const completedCount = Object.values(progressMap).filter((p) => p.completed).length;
   const totalCount = mod.questions.length;
   const totalLevelProgress = Object.values(progressMap).reduce(
@@ -75,11 +94,8 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
     if (optionIndex === currentLevel.answer) {
       setStreak((s) => s + 1);
       if (qProgress.level === 3) {
-        playLevelUp();
-        const updated: QuestionProgress = { level: 3, completed: true };
-        updateQuestionProgress(mod!.id, question.id, updated);
-        setProgressMap((prev) => ({ ...prev, [question.id]: updated }));
-        setPhase("correct");
+        playDing();
+        setPhase("explain");
       } else {
         playDing();
         setPhase("confidence");
@@ -106,14 +122,79 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
     advanceToNext();
   }
 
+  async function handleExplanationSubmit() {
+    if (!explanation.trim()) return;
+    setPhase("evaluating");
+    setEvalError("");
+    try {
+      const res = await fetch("/api/evaluate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          questionText: currentLevel.text,
+          correctAnswer: currentLevel.options[currentLevel.answer],
+          userExplanation: explanation,
+        }),
+      });
+      if (!res.ok) throw new Error("Evaluation failed");
+      const data = await res.json();
+      setEvaluationResult(data);
+      const passed = data.english.score >= 3 && data.concepts.score >= 3;
+      if (passed) {
+        const updated: QuestionProgress = { level: 3, completed: true };
+        updateQuestionProgress(mod!.id, question.id, updated);
+        setProgressMap((prev) => ({ ...prev, [question.id]: updated }));
+      }
+      setPhase("results");
+    } catch {
+      setEvalError("Something went wrong. Please try again.");
+      setPhase("explain");
+    }
+  }
+
   function advanceToNext() {
     setPhase("answering");
     setSelectedAnswer(null);
+    setLangOverride(null);
+    setExplanation("");
+    setEvaluationResult(null);
+    setEvalError("");
     const next = findNextIncomplete(currentIndex + 1);
     if (next === null) {
       router.push(`/complete/${mod!.id}`);
     } else {
       setCurrentIndex(next);
+    }
+  }
+
+  async function playTTS() {
+    if (isPlayingTTS) return;
+    setIsPlayingTTS(true);
+    try {
+      const res = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text: currentLevel.text,
+          languageCode: activeLang === "fr" ? "fr-FR" : "en-US",
+        }),
+      });
+
+      if (!res.ok) throw new Error("TTS failed");
+      
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      
+      audio.onended = () => {
+        setIsPlayingTTS(false);
+        URL.revokeObjectURL(url);
+      };
+      
+      audio.play();
+    } catch (err) {
+      console.error(err);
+      setIsPlayingTTS(false);
     }
   }
 
@@ -123,7 +204,7 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
   return (
     <main className="min-h-screen bg-white p-4 flex flex-col">
       {/* Header */}
-      <div className="max-w-xl mx-auto w-full mb-6 animate-fade-in">
+      <div className="max-w-2xl mx-auto w-full mb-8 animate-fade-in">
         <div className="flex items-center justify-between mb-3">
           <button
             onClick={() => router.push("/modules")}
@@ -170,10 +251,10 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
         </div>
       </div>
 
-      <div className="max-w-xl mx-auto w-full animate-slide-up">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+      <div className="max-w-2xl mx-auto w-full animate-slide-up">
+        <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-6 sm:p-10">
           {/* Level badge */}
-          <div className="flex items-center gap-2 mb-5">
+          <div className="flex items-center gap-2 mb-8">
             <span
               className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
                 qProgress.level === 1
@@ -185,6 +266,16 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
             >
               Lv. {qProgress.level} — {levelLabel}
             </span>
+            
+            {/* Lang Toggle */}
+            <button
+              onClick={() => setLangOverride(activeLang === "fr" ? "en" : "fr")}
+              className="ml-2 flex items-center bg-gray-100 rounded-lg p-0.5"
+            >
+              <span className={`px-2 py-0.5 text-[10px] font-bold rounded-md transition-colors ${activeLang === "en" ? "bg-white text-gray-900 shadow-sm" : "text-gray-400 hover:text-gray-600"}`}>EN</span>
+              <span className={`px-2 py-0.5 text-[10px] font-bold rounded-md transition-colors ${activeLang === "fr" ? "bg-white text-gray-900 shadow-sm" : "text-gray-400 hover:text-gray-600"}`}>FR</span>
+            </button>
+
             {/* Level dots */}
             <div className="flex gap-1 ml-auto">
               {[1, 2, 3].map((l) => (
@@ -199,15 +290,31 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
           </div>
 
           {/* Question text */}
-          <p className="text-lg font-medium text-gray-900 mb-6 leading-relaxed">
-            {currentLevel.text}
-          </p>
+          <div className="flex items-start justify-between gap-6 mb-8">
+            <p className="text-xl font-medium text-gray-900 leading-relaxed max-w-[90%]">
+              {currentLevel.text}
+            </p>
+            <button
+              onClick={playTTS}
+              disabled={isPlayingTTS}
+              className={`flex-shrink-0 p-2.5 rounded-xl border transition-all ${
+                isPlayingTTS
+                  ? "bg-blue-50 border-blue-200 text-blue-500 animate-pulse"
+                  : "bg-white border-gray-200 text-gray-400 hover:text-blue-500 hover:border-blue-200 hover:bg-blue-50 shadow-sm active:scale-95"
+              }`}
+              title="Listen to question"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              </svg>
+            </button>
+          </div>
 
           {/* Options */}
-          <div className="space-y-2.5" key={`${question.id}-${attempt}`}>
+          <div className="space-y-4" key={`${question.id}-${attempt}`}>
             {currentLevel.options.map((opt, i) => {
               let cls =
-                "w-full text-left p-3.5 rounded-xl border transition-all text-gray-800 text-[0.94rem]";
+                "w-full text-left p-4 sm:p-5 rounded-2xl border transition-all text-gray-800 text-[0.94rem] sm:text-base";
               if (phase !== "answering") {
                 if (i === currentLevel.answer) {
                   cls += " border-green-400 bg-green-50 ring-1 ring-green-200";
@@ -227,7 +334,7 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
                   disabled={phase !== "answering"}
                   className={cls}
                 >
-                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-gray-100 text-gray-500 text-xs font-bold mr-3">
+                  <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-gray-100/80 text-gray-500 text-xs font-bold mr-4">
                     {String.fromCharCode(65 + i)}
                   </span>
                   {opt}
@@ -306,6 +413,89 @@ export default function QuizPage({ params }: { params: Promise<{ moduleId: strin
                     I knew it
                   </button>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* Explain phase — Level 3 explain your answer */}
+          {phase === "explain" && (
+            <div className="mt-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                <p className="text-blue-800 font-medium">Explain your answer</p>
+                <p className="text-blue-600 text-sm mt-1">
+                  Why is &ldquo;{currentLevel.options[currentLevel.answer]}&rdquo; the correct answer? Use proper terminology.
+                </p>
+              </div>
+              <textarea
+                value={explanation}
+                onChange={(e) => setExplanation(e.target.value)}
+                placeholder="Type your explanation here..."
+                className="w-full border-2 border-gray-200 rounded-lg p-3 text-gray-800 min-h-[120px] focus:border-blue-400 focus:outline-none resize-y"
+              />
+              {evalError && (
+                <p className="text-red-600 text-sm mt-2">{evalError}</p>
+              )}
+              <button
+                onClick={handleExplanationSubmit}
+                disabled={!explanation.trim()}
+                className="mt-3 w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Submit Explanation
+              </button>
+            </div>
+          )}
+
+          {/* Evaluating phase — spinner */}
+          {phase === "evaluating" && (
+            <div className="mt-6 text-center">
+              <div className="inline-block w-10 h-10 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mb-3" />
+              <p className="text-gray-600 font-medium">Evaluating your explanation...</p>
+            </div>
+          )}
+
+          {/* Results phase — show scores and feedback */}
+          {phase === "results" && evaluationResult && (
+            <div className="mt-4">
+              {evaluationResult.english.score >= 3 && evaluationResult.concepts.score >= 3 ? (
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4 text-center">
+                  <p className="text-2xl mb-1">⭐</p>
+                  <p className="text-green-800 font-medium">Passed!</p>
+                </div>
+              ) : (
+                <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4 text-center">
+                  <p className="text-orange-800 font-medium">Not quite — this card will come back around.</p>
+                </div>
+              )}
+
+              <div className="space-y-3">
+                <div className="bg-white border border-gray-200 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-1">
+                    <p className="font-medium text-gray-900">English Proficiency</p>
+                    <span className={`font-bold text-lg ${evaluationResult.english.score >= 3 ? "text-green-600" : "text-red-600"}`}>
+                      {evaluationResult.english.score}/5
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-sm">{evaluationResult.english.feedback}</p>
+                </div>
+
+                <div className="bg-white border border-gray-200 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-1">
+                    <p className="font-medium text-gray-900">Conceptual Understanding</p>
+                    <span className={`font-bold text-lg ${evaluationResult.concepts.score >= 3 ? "text-green-600" : "text-red-600"}`}>
+                      {evaluationResult.concepts.score}/5
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-sm">{evaluationResult.concepts.feedback}</p>
+                </div>
+              </div>
+
+              <div className="text-center mt-4">
+                <button
+                  onClick={advanceToNext}
+                  className="bg-blue-600 text-white w-14 h-14 rounded-full text-2xl flex items-center justify-center mx-auto hover:bg-blue-700 transition-colors active:scale-95"
+                >
+                  →
+                </button>
               </div>
             </div>
           )}
