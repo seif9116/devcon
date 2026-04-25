@@ -39,13 +39,15 @@ if (!process.env.AWS_ACCESS_KEY_ID) {
   console.warn("⚠️ AWS credentials not found in env variables! TTS and Evaluate will fail unless you exported them or set them in .env.local");
 }
 
-const credentialsConfig = {
-  credentials: {
-    accessKeyId: "ASIA6GBMGBROTVS236UB",
-    secretAccessKey: "39QBxa9izgCIbmPaQTSgNVNUMUwtH1Hb0hEgkWx+",
-    sessionToken: "IQoJb3JpZ2luX2VjENP//////////wEaCXVzLWVhc3QtMSJIMEYCIQDX2tfH0+pkiTBROgkso3DGpMqOSmpTwuPXD1j0mcAH5AIhAITdVbBTff/czyb6GtZE9TX0uc3XeI8s4sS1IGnevxksKqICCJz//////////wEQABoMOTc1MDUwMjQ3MjYxIgy9Jy3DJB4xSHeGGR0q9gHm57CXCxkPjfo2SZNz0MuNpliBeYqEO8GpVocPRmWOV8orTU2hsYQu7TZYWPTmu0l9Q6Yi2qmzbDVFKYxkecKZXLquLK8Rqoz+N/75V8/pPfRPxvzjH+U789AdK3HLFYXISG2QdyaYf2c3pG//oBGLXj4vNW3nNk/fVXYOIV8ojzQoZfcvroDR9nEFCEBpzop7gvZBPYB+VhE0+tY51YP1aam+W5Xs5gq0gJczqsChYmhQ30yZsMY/ssWhku6Z/rHBao8F5onYSSrjd8jMvni60fb/H+Aep1QcJej/AGcMF19448tb1Bq/efKxs2ctTQR3yW6W8ikwsp20zwY6nAGD19sMoRqXAK2muWfCBdw8jUE0SaxC6RcNzy76pXWgkMcryNEdaDsZ4ORNcGIo5sgx4m8Hmxac94mIo3sV3J1VzhyYtWZoyX+5nfK0trRtoh1MenZJKOZ6uzjIqP1LK5/6lpjNnft50NGAGNJ9jPUMrdRI8Pd4wiBv0MfgMfw1u6K8ZNtBwdMojNW7QxLc5rgNsTRx7OdlofXHtB8=",
-  },
-};
+const credentialsConfig = process.env.AWS_ACCESS_KEY_ID
+  ? {
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+        ...(process.env.AWS_SESSION_TOKEN ? { sessionToken: process.env.AWS_SESSION_TOKEN } : {}),
+      },
+    }
+  : {};
 
 const agentClient = new BedrockAgentRuntimeClient({ region: REGION, ...credentialsConfig });
 const runtimeClient = new BedrockRuntimeClient({ region: REGION, ...credentialsConfig });
