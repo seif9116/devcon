@@ -25,16 +25,16 @@ export function playDing() {
   gain.connect(ctx.destination);
   
   osc.type = "sine";
-  // Bright sharp ding
-  osc.frequency.setValueAtTime(800, ctx.currentTime);
-  osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.1);
+  // Softer, rounder ding
+  osc.frequency.setValueAtTime(600, ctx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.05);
   
   gain.gain.setValueAtTime(0, ctx.currentTime);
-  gain.gain.linearRampToValueAtTime(0.3, ctx.currentTime + 0.05);
-  gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+  gain.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
   
   osc.start(ctx.currentTime);
-  osc.stop(ctx.currentTime + 0.5);
+  osc.stop(ctx.currentTime + 0.3);
   
   // Weak haptic tap
   if (typeof navigator !== 'undefined' && navigator.vibrate) {
