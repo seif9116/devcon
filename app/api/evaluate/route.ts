@@ -7,7 +7,7 @@ import {
   InvokeModelCommand,
 } from "@aws-sdk/client-bedrock-runtime";
 
-const KB_ID = "SBTCWY1W77";
+const KB_ID = "FCF1GEJPXT";
 const REGION = process.env.AWS_DEFAULT_REGION || process.env.AWS_REGION || "us-west-2";
 const MODEL_ID = "us.anthropic.claude-haiku-4-5-20251001-v1:0";
 
