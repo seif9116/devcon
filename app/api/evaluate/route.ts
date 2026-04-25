@@ -72,7 +72,8 @@ async function retrieveContext(query: string): Promise<string> {
     });
 
     return chunks.length > 0 ? chunks.join("\n\n") : "(Reference material unavailable)";
-  } catch {
+  } catch (err) {
+    console.error("KB retrieval failed:", err);
     return "(Reference material unavailable)";
   }
 }
