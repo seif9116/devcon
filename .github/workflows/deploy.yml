@@ -2,7 +2,7 @@ name: Deploy to EC2
 
 on:
   push:
-    branches: [master]
+    branches: [master, deploy-to-ec2]
 
 jobs:
   deploy:
@@ -12,15 +12,20 @@ jobs:
         env:
           EC2_HOST: ${{ secrets.EC2_HOST }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          BRANCH: ${{ github.ref_name }}
         run: |
           echo "${SSH_PRIVATE_KEY}" > key.pem
           chmod 600 key.pem
-          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${EC2_HOST} << 'EOF'
+          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${EC2_HOST} << ENDSSH
+            sudo chown -R ec2-user:ec2-user ~/app
             cd ~/app
-            git pull
+            git config --global --add safe.directory ~/app
+            git fetch origin
+            git checkout ${BRANCH}
+            git pull origin ${BRANCH}
             npm ci
             npm run build
             pkill -f "next start" || true
             HOST=0.0.0.0 PORT=3000 nohup npm start > /tmp/app.log 2>&1 &
-          EOF
+          ENDSSH
           rm key.pem

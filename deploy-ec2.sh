@@ -41,7 +41,8 @@ git clone __REPO_URL__ app
 cd app
 npm ci
 npm run build
-HOST=0.0.0.0 PORT=3000 npm start
+chown -R ec2-user:ec2-user /home/ec2-user/app
+HOST=0.0.0.0 PORT=3000 runuser -u ec2-user -- npm start
 BOOTEOF
 )
 USER_DATA="${USER_DATA/__REPO_URL__/${REPO_URL}}"
