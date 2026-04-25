@@ -1,0 +1,26 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to EC2
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          echo "${SSH_PRIVATE_KEY}" > key.pem
+          chmod 600 key.pem
+          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${EC2_HOST} << 'EOF'
+            cd ~/app
+            git pull
+            npm ci
+            npm run build
+            pkill -f "next start" || true
+            HOST=0.0.0.0 PORT=3000 nohup npm start > /tmp/app.log 2>&1 &
+          EOF
+          rm key.pem
