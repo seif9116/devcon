@@ -8,32 +8,42 @@ import {
 } from "@aws-sdk/client-bedrock-runtime";
 
 const KB_ID = "SBTCWY1W77";
-const REGION = process.env.AWS_REGION || "us-east-1";
-const MODEL_ID = "us.anthropic.claude-3-haiku-20240307-v1:0";
+const REGION = process.env.AWS_DEFAULT_REGION || process.env.AWS_REGION || "us-west-2";
+const MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
 
 const SYSTEM_PROMPT =
-  "You are an evaluator for security guard exam preparation. " +
-  "You will receive reference material from the ABST manual, an exam question, " +
+  "You are a STRICT AND RIGOROUS evaluator for security guard exam preparation. " +
+  "You will receive reference material from the ABST modules, an exam question, " +
   "the correct answer, and a candidate's explanation of why that answer is correct.\n\n" +
-  "Evaluate the candidate on two dimensions:\n\n" +
+  "Evaluate the candidate rigorously on two dimensions. HARSHLY PENALIZE low-effort answers. " +
+  "If the candidate writes 'idk', 'I don't know', or gives a one-word lazy answer, they MUST receive a score of 1 for both categories.\n\n" +
   "1. **English Proficiency (1-5):** Assess grammar, sentence structure, spelling, " +
   "and overall clarity. A score of 3 means acceptable with minor errors.\n\n" +
   "2. **Conceptual Understanding (1-5):** Assess whether the candidate demonstrates " +
   "correct concepts and uses proper ABST terminology. A score of 3 means the core " +
   "concept is understood with mostly correct terminology.\n\n" +
+  "You MUST incorporate feedback from the provided module reference material in your explanation. " +
+  "Please limit your total feedback text to a maximum of 350 words.\n\n" +
   "You MUST respond with ONLY valid JSON in exactly this format — no extra text, " +
   "no markdown fences:\n" +
-  '{"english":{"score":N,"feedback":"..."},"concepts":{"score":N,"feedback":"..."}}\n\n' +
-  "Keep feedback to 1-2 sentences each.";
+  '{"english":{"score":N,"feedback":"..."},"concepts":{"score":N,"feedback":"..."}}';
 
-const credentials = {
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-  ...(process.env.AWS_SESSION_TOKEN ? { sessionToken: process.env.AWS_SESSION_TOKEN } : {}),
-};
+if (!process.env.AWS_ACCESS_KEY_ID) {
+  console.warn("⚠️ AWS credentials not found in env variables! TTS and Evaluate will fail unless you exported them or set them in .env.local");
+}
 
-const agentClient = new BedrockAgentRuntimeClient({ region: REGION, credentials });
-const runtimeClient = new BedrockRuntimeClient({ region: REGION, credentials });
+const credentialsConfig = process.env.AWS_ACCESS_KEY_ID
+  ? {
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+        ...(process.env.AWS_SESSION_TOKEN ? { sessionToken: process.env.AWS_SESSION_TOKEN } : {}),
+      },
+    }
+  : {};
+
+const agentClient = new BedrockAgentRuntimeClient({ region: REGION, ...credentialsConfig });
+const runtimeClient = new BedrockRuntimeClient({ region: REGION, ...credentialsConfig });
 
 async function retrieveContext(query: string): Promise<string> {
   try {
@@ -88,7 +98,10 @@ async function evaluate(
 
   const response = await runtimeClient.send(command);
   const responseBody = JSON.parse(new TextDecoder().decode(response.body));
-  const assistantText = responseBody.content[0].text.trim();
+  let assistantText = responseBody.content[0].text.trim();
+  
+  // Strip markdown fences in case Claude returns them despite the prompt
+  assistantText = assistantText.replace(/^```json\s*/i, "").replace(/^```\s*/, "").replace(/```$/i, "").trim();
 
   return JSON.parse(assistantText);
 }
@@ -113,7 +126,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Evaluation error:", error);
     return Response.json(
-      { error: "Evaluation failed. Please try again." },
+      { error: `Evaluation failed: ${error instanceof Error ? error.message : String(error)}` },
       { status: 500 }
     );
   }
